@@ -1,8 +1,13 @@
+import React from 'react';
+import { MainApp } from "./MainApp";
+import { BrowserRouter } from 'react-router-dom'
 function App() {
   return (
-    <div className="App">
-      Aplicación de asignación de materias
-    </div>
+    <React.StrictMode>
+      <BrowserRouter>
+        <MainApp />
+      </BrowserRouter>
+    </React.StrictMode>
   );
 }
 
