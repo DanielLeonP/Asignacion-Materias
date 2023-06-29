@@ -35,10 +35,11 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .itemColumn {
-    margin: 0vh 5vh 5vh 5vh;
+    margin: 0vh 5vh 0vh 5vh;
     /* content: vh vh vh vh; */
     display: flex;
     justify-content: center;
@@ -57,17 +58,24 @@ body {
     align-items: center;
 }
 
-.AdRow {
+.AddRow {
     display: flex;
     justify-content: center;
     align-items: center;
-
     border-radius: 50px;
     background: #AAA5D4;
     width: 90%;
     padding: 1vh 0vh 1vh 0vh;
-    margin: 0vh 0vh 5vh 0vh;
+    margin: 2vh 0vh 2vh 0vh;
     flex-direction: column;
+}
+
+.fieldsAddRow {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .inputRow {
@@ -76,4 +84,36 @@ body {
     border-radius: 8px;
     background: #E8E6F4;
     border: none;
+    width: 60%;
+}
+
+.fieldProfessor {
+    margin-top: 2vh;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: right;
+}
+
+.submit {
+    border-radius: 50px;
+    background: #32409E;
+    padding: 1vh 5vh 1vh 5vh;
+    margin: 1vh 5vh 1vh 5vh;
+    color: white;
+}
+
+.fieldsColumn {
+    margin-top: 2vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+
+}
+
+table {
+    width: 95%;
+    /* background-color: rebeccapurple; */
+    margin: 1vh 0vh 2vh 0vh;
 }
