@@ -31,45 +31,46 @@ export const ListPage = () => {
 
       <div className='AddRow' >
         <a onClick={toggleMenuAddRow}> Agregar Fila</a>
-        {isOpenAddRow && (
-          <div className='fieldsAddRow'>
-            <FieldProfessor field={{ label: 'Nombre de profesor', type: 'text' }} />
-            <FieldProfessor field={{ label: 'Grado', type: 'text' }} />
-            <FieldProfessor field={{ label: 'Clave', type: 'number' }} />
-            <FieldProfessor field={{ label: 'Tipo', type: 'text' }} />
-            <FieldProfessor field={{ label: 'Nivel', type: 'text' }} />
-            <FieldProfessor field={{ label: 'Materias que tiene', type: 'text' }} />
-            <FieldProfessor field={{ label: 'Asignadas', type: 'text' }} />
-            <FieldProfessor field={{ label: 'Faltantes', type: 'text' }} />
-            <FieldProfessor field={{ label: 'Prácticas', type: 'text' }} />
-            <FieldProfessor field={{ label: 'Observaciones', type: 'text' }} />
-            <div type='submit' className='submit'>Agregar</div>
-          </div>
+        {/* {isOpenAddRow && ( */}
+        <div className={`collapse ${isOpenAddRow ? 'fieldsAddRow' : ''}`}>
+          <FieldProfessor field={{ label: 'Nombre de profesor', type: 'text' }} />
+          <FieldProfessor field={{ label: 'Grado', type: 'text' }} />
+          <FieldProfessor field={{ label: 'Clave', type: 'number' }} />
+          <FieldProfessor field={{ label: 'Tipo', type: 'text' }} />
+          <FieldProfessor field={{ label: 'Nivel', type: 'text' }} />
+          <FieldProfessor field={{ label: 'Materias que tiene', type: 'text' }} />
+          <FieldProfessor field={{ label: 'Asignadas', type: 'text' }} />
+          <FieldProfessor field={{ label: 'Faltantes', type: 'text' }} />
+          <FieldProfessor field={{ label: 'Prácticas', type: 'text' }} />
+          <FieldProfessor field={{ label: 'Observaciones', type: 'text' }} />
+          <div type='submit' className='submit'>Agregar</div>
+        </div>
 
-        )}
+        {/* )} */}
       </div>
 
       <div className='AddRow'>
         <a onClick={toggleMenuColumns}> Columnas</a>
-        {isOpenColumns && (
-          <div className='fieldsColumn'>
-            <FieldColumn field={{ label: 'Grado', checked: true }} />
-            <FieldColumn field={{ label: 'Clave', checked: false }} />
-            <FieldColumn field={{ label: 'Profesor', checked: false }} />
-            <FieldColumn field={{ label: 'Tipo', checked: false }} />
-            <FieldColumn field={{ label: 'Nivel', checked: false }} />
-            <FieldColumn field={{ label: 'Materias que tiene', checked: false }} />
-            <FieldColumn field={{ label: 'Asignadas', checked: false }} />
-            <FieldColumn field={{ label: 'Faltantes', checked: false }} />
-            <FieldColumn field={{ label: 'Prácticas', checked: false }} />
-            <FieldColumn field={{ label: 'Observaciones', checked: false }} />
-            <div type='submit' className='submit'>Continuar</div>
-          </div>
-        )}
+        {/* {isOpenColumns && ( */}
+        <div className={`collapse ${isOpenColumns ? 'fieldsAddRow' : ''}`}>
+          <FieldColumn field={{ label: 'Grado', checked: true }} />
+          <FieldColumn field={{ label: 'Clave', checked: false }} />
+          <FieldColumn field={{ label: 'Profesor', checked: false }} />
+          <FieldColumn field={{ label: 'Tipo', checked: false }} />
+          <FieldColumn field={{ label: 'Nivel', checked: false }} />
+          <FieldColumn field={{ label: 'Materias que tiene', checked: false }} />
+          <FieldColumn field={{ label: 'Asignadas', checked: false }} />
+          <FieldColumn field={{ label: 'Faltantes', checked: false }} />
+          <FieldColumn field={{ label: 'Prácticas', checked: false }} />
+          <FieldColumn field={{ label: 'Observaciones', checked: false }} />
+          <div type='submit' className='submit'>Continuar</div>
+        </div>
+        {/* )} */}
       </div>
 
       <table>
         <tr>
+          <th>#</th>
           <th>Grado</th>
           <th>Clave</th>
           <th>Profesor</th>
@@ -82,6 +83,7 @@ export const ListPage = () => {
           <th>Observaciones</th>
         </tr>
         <tr>
+        <th>#</th>
           <th>Grado</th>
           <th>Clave</th>
           <th>Profesor</th>
