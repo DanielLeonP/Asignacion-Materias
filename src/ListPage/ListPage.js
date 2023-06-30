@@ -5,6 +5,30 @@ import { FieldProfessor } from './FieldProfessor';
 import { FieldColumn } from './FieldColumn';
 
 export const ListPage = () => {
+  const data = [['DR.', 4658, 'ACUÑA GARCIA JOSE ALFREDO', 'PTC', 'LICENCIATURA', 7, 0, 0, 0, 'Prueba de observación'],
+  ['DR.', 12115, 'AGUIRRE CARACHEO EDUARDO', 'PTC', 'LICENCIATURA', 4, 0, 0, 0, ''],
+  ['MSI.', 6746, 'ARREGUIN RICO SANDRA PATRICIA', 'PTC', 'LICENCIATURA', 3, 0, 3, 1, ''],
+  ['DRA.', 10267, 'CANCHOLA MAGDALENO SANDRA LUZ', 'PTC', 'LICENCIATURA', 4, 0, 4, 0, ''],
+  ['DR.', 4824, 'CHAPARRO SANCHEZ RICARDO', 'PTC', 'LICENCIATURA', 3, 0, 3, 0, ''],
+  ['DR.', 3604, 'CHAVEZ MORALES UBALDO', 'PTC', 'LICENCIATURA', 4, 0, 4, 0, ''],
+  ['DR.', 4658, 'ACUÑA GARCIA JOSE ALFREDO', 'PTC', 'LICENCIATURA', 7, 0, 0, 0, ''],
+  ['DR.', 12115, 'AGUIRRE CARACHEO EDUARDO', 'PTC', 'LICENCIATURA', 4, 0, 0, 0, ''],
+  ['MSI.', 6746, 'ARREGUIN RICO SANDRA PATRICIA', 'PTC', 'LICENCIATURA', 3, 0, 3, 1, ''],
+  ['DRA.', 10267, 'CANCHOLA MAGDALENO SANDRA LUZ', 'PTC', 'LICENCIATURA', 4, 0, 4, 0, ''],
+  ['DR.', 4824, 'CHAPARRO SANCHEZ RICARDO', 'PTC', 'LICENCIATURA', 3, 0, 3, 0, ''],
+  ['DR.', 3604, 'CHAVEZ MORALES UBALDO', 'PTC', 'LICENCIATURA', 4, 0, 4, 0, ''],
+  ['DR.', 4658, 'ACUÑA GARCIA JOSE ALFREDO', 'PTC', 'LICENCIATURA', 7, 0, 0, 0, ''],
+  ['DR.', 12115, 'AGUIRRE CARACHEO EDUARDO', 'PTC', 'LICENCIATURA', 4, 0, 0, 0, ''],
+  ['MSI.', 6746, 'ARREGUIN RICO SANDRA PATRICIA', 'PTC', 'LICENCIATURA', 3, 0, 3, 1, ''],
+  ['DRA.', 10267, 'CANCHOLA MAGDALENO SANDRA LUZ', 'PTC', 'LICENCIATURA', 4, 0, 4, 0, ''],
+  ['DR.', 4824, 'CHAPARRO SANCHEZ RICARDO', 'PTC', 'LICENCIATURA', 3, 0, 3, 0, ''],
+  ['DR.', 3604, 'CHAVEZ MORALES UBALDO', 'PTC', 'LICENCIATURA', 4, 0, 4, 0, ''],
+  ['DR.', 4658, 'ACUÑA GARCIA JOSE ALFREDO', 'PTC', 'LICENCIATURA', 7, 0, 0, 0, ''],
+  ['DR.', 12115, 'AGUIRRE CARACHEO EDUARDO', 'PTC', 'LICENCIATURA', 4, 0, 0, 0, ''],
+  ['MSI.', 6746, 'ARREGUIN RICO SANDRA PATRICIA', 'PTC', 'LICENCIATURA', 3, 0, 3, 1, ''],
+  ['DRA.', 10267, 'CANCHOLA MAGDALENO SANDRA LUZ', 'PTC', 'LICENCIATURA', 4, 0, 4, 0, ''],
+  ['DR.', 4824, 'CHAPARRO SANCHEZ RICARDO', 'PTC', 'LICENCIATURA', 3, 0, 3, 0, ''],
+  ['DR.', 3604, 'CHAVEZ MORALES UBALDO', 'PTC', 'LICENCIATURA', 4, 0, 4, 0, '']];
 
   const [isOpenAddRow, setIsOpenAddRow] = useState(false);
 
@@ -30,7 +54,10 @@ export const ListPage = () => {
       </div>
 
       <div className='AddRow' >
-        <a onClick={toggleMenuAddRow}> Agregar Fila</a>
+        <a onClick={toggleMenuAddRow}>
+          Agregar Fila
+          {/* <img className='icon' src='/public/images/icons/navegar.png' /> */}
+        </a>
         {/* {isOpenAddRow && ( */}
         <div className={`collapse ${isOpenAddRow ? 'fieldsAddRow' : ''}`}>
           <FieldProfessor field={{ label: 'Nombre de profesor', type: 'text' }} />
@@ -69,7 +96,7 @@ export const ListPage = () => {
       </div>
 
       <table>
-        <tr>
+        <tr className='headerTable'>
           <th>#</th>
           <th>Grado</th>
           <th>Clave</th>
@@ -82,19 +109,23 @@ export const ListPage = () => {
           <th>Prácticas</th>
           <th>Observaciones</th>
         </tr>
-        <tr>
-        <th>#</th>
-          <th>Grado</th>
-          <th>Clave</th>
-          <th>Profesor</th>
-          <th>Tipo</th>
-          <th>Nivel</th>
-          <th>Materias</th>
-          <th>Asignadas</th>
-          <th>Faltantes</th>
-          <th>Prácticas</th>
-          <th>Observaciones</th>
-        </tr>
+        {data.map((user, counter) => {
+          return (
+            <tr>
+              <th>{counter + 1}</th>
+              <th>{user[0]}</th>
+              <th>{user[1]}</th>
+              <th>{user[2]}</th>
+              <th>{user[3]}</th>
+              <th>{user[4]}</th>
+              <th>{user[5]}</th>
+              <th>{user[6]}</th>
+              <th>{user[7]}</th>
+              <th>{user[8]}</th>
+              <th>{user[9]}</th>
+            </tr>
+          )
+        })}
       </table>
 
     </div>

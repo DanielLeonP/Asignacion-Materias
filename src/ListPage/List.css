@@ -5,8 +5,27 @@
 
 body {
     font-family: 'NEXA', sans-serif;
-    background: rgba(30, 55, 153, 0.70);
+    background: url('../../public/images/FIF.jpg');
+    background-color: rgba(30, 55, 153, 0.70);
+    background-blend-mode:soft-light;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
+body::-webkit-scrollbar {
+    width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+    border-radius: 100px;
 }
 
 .container {
@@ -72,15 +91,21 @@ body {
 
 .collapse {
     /* visibility: hidden; */
-    height: 0px;
     overflow: hidden;
     max-height: 0px;
     transition: max-height 0.6s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
 }
 
 .fieldsAddRow {
     /* visibility: visible; */
     max-height: 500px;
+    transition: max-height 0.6s;
     height: auto;
     width: 100%;
     display: flex;
@@ -128,4 +153,19 @@ table {
     width: 95%;
     /* background-color: rebeccapurple; */
     margin: 1vh 0vh 2vh 0vh;
+}
+tr{
+    background-color: white;
+}
+tr:nth-child(even) {
+    background-color: #AAA5D4;
+}
+
+.headerTable {
+    background-color: #32409E;
+    color: white;
+}
+
+.icon {
+    width: 4vh;
 }
