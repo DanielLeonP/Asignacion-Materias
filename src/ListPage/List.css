@@ -5,6 +5,7 @@
 
 body {
     font-family: 'NEXA', sans-serif;
+<<<<<<< Updated upstream
     background: url('../../public/images/FIF.jpg');
     background-color: rgba(30, 55, 153, 0.70);
     background-blend-mode: soft-light;
@@ -26,6 +27,9 @@ body::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     outline: 1px solid slategrey;
     border-radius: 100px;
+=======
+    background: rgba(30, 55, 153, 0.70);
+>>>>>>> Stashed changes
 }
 
 .container {
