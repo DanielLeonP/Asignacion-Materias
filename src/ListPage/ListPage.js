@@ -1,34 +1,18 @@
-import React, { useState } from 'react'
+// Styles
 import './List.css'
-import { ItemColumn } from './ItemColumn'
 
-import { UserTable } from './UserTable';
-import { Columns } from './Columns';
-import { AddRow } from './AddRow';
+// Components
+import { ItemColumn } from './components/ItemColumn'
+import { UserTable } from './components/UserTable';
+import { Columns } from './components/Columns';
+import { AddRow } from './components/AddRow';
 
-const data = [['DR.', 4658, 'ACUÑA GARCIA JOSE ALFREDO', 'PTC', 'LICENCIATURA', 7, 0, 0, 0, 'Prueba de observación'],
-['DR.', 12115, 'AGUIRRE CARACHEO EDUARDO', 'PTC', 'LICENCIATURA', 4, 0, 0, 0, ''],
-['MSI.', 6746, 'ARREGUIN RICO SANDRA PATRICIA', 'PTC', 'LICENCIATURA', 3, 0, 3, 1, ''],
-['DRA.', 10267, 'CANCHOLA MAGDALENO SANDRA LUZ', 'PTC', 'LICENCIATURA', 4, 0, 4, 0, ''],
-['DR.', 4824, 'CHAPARRO SANCHEZ RICARDO', 'PTC', 'LICENCIATURA', 3, 0, 3, 0, ''],
-['DR.', 3604, 'CHAVEZ MORALES UBALDO', 'PTC', 'LICENCIATURA', 4, 0, 4, 0, ''],
-];
+// hooks
+import { ListHook } from './hooks/ListHook';
 
-const initialStateColumns = {
-  number: true,
-  grado: true,
-  clave: true,
-  profesor: true,
-  tipo: true,
-  nivel: true,
-  materias: true,
-  asignadas: true,
-  faltantes: true,
-  practicas: true,
-  observaciones: true
-}
+
 export const ListPage = () => {
-  const [columns, setColumns] = useState(initialStateColumns);
+  const { columns, setColumns, data, handleAddTodo, handleDeleteTodo, handleEditTodo, columnsInitialState, columnsBeforeToEdit } = ListHook();
 
   return (
     <div className='container'>
@@ -37,14 +21,21 @@ export const ListPage = () => {
       <div className='column3'>
         <ItemColumn item={{ title: '# Materias', value: '5' }} />
         <ItemColumn item={{ title: 'Restantes', value: '3' }} />
-        <ItemColumn item={{ title: 'Otro', value: '2' }} />
+        <ItemColumn item={{ title: 'Materias de profesores total', value: '2' }} />
+        <ItemColumn item={{ title: 'Prácticas total', value: '3' }} />
+        <ItemColumn item={{ title: 'Restantes asignadas', value: '3' }} />
+        <ItemColumn item={{ title: 'Observaciones total', value: '3' }} />
       </div>
 
-      <AddRow />
+      <AddRow onAddTodo={handleAddTodo} />
 
       <Columns columns={columns} setColumns={setColumns} />
 
-      <UserTable data={data} columns={columns} />
+      {
+        data.length > 0
+          ? <UserTable data={data} columns={columns} onDeleteTodo={handleDeleteTodo} onEditTodo={handleEditTodo} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} />
+          : ''
+      }
 
     </div>
   )

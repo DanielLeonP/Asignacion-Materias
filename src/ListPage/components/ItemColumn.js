@@ -1,4 +1,4 @@
-import './List.css'
+
 export const ItemColumn = ({ item }) => {
     return (
         <div className="itemColumn">

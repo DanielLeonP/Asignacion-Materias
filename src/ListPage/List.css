@@ -5,7 +5,6 @@
 
 body {
     font-family: 'NEXA', sans-serif;
-<<<<<<< Updated upstream
     background: url('../../public/images/FIF.jpg');
     background-color: rgba(30, 55, 153, 0.70);
     background-blend-mode: soft-light;
@@ -27,9 +26,6 @@ body::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     outline: 1px solid slategrey;
     border-radius: 100px;
-=======
-    background: rgba(30, 55, 153, 0.70);
->>>>>>> Stashed changes
 }
 
 .container {
@@ -102,7 +98,6 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    display: grid;
     width: 100%;
 }
 
@@ -116,6 +111,14 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.AddRowTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .inputRow {
@@ -142,6 +145,7 @@ body::-webkit-scrollbar-thumb {
     padding: 1vh 5vh 1vh 5vh;
     margin: 1vh 5vh 1vh 5vh;
     color: white;
+    cursor: pointer;
 }
 
 .fieldsColumn {
@@ -150,12 +154,26 @@ body::-webkit-scrollbar-thumb {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1% 10%;
+    white-space: nowrap;
+}
+
+.divTable {
+    width: 95%;
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1vh 0vh 2vh 0vh;
+    padding: 4px;
+
+    /* padding: 2vh 5vh 2vh 5vh; */
 }
 
 table {
-    width: 95%;
+    width: 100%;
     /* background-color: rebeccapurple; */
-    margin: 1vh 0vh 2vh 0vh;
+    /* margin: 1vh 0vh 2vh 0vh; */
+    /* overflow-x: auto; */
 }
 
 tr {
@@ -166,11 +184,44 @@ tr:nth-child(even) {
     background-color: #AAA5D4;
 }
 
+.editRowTable {
+    border: 3px solid #ABABAB;
+    background: #D4D1EA;
+    /* box-shadow: 0px 5px 50px 0px rgba(0, 0, 0, 0.80); */
+    /* border: 20px; */
+}
+
 .headerTable {
     background-color: #32409E;
     color: white;
 }
 
+.editRow {
+    border: 1px solid #ccc;
+    font-family: inherit;
+    padding: 1px 6px;
+    /* position: relative; */
+    width: 70%;
+    min-width: 1px;
+}
+
+.noBackgroundColor {
+    background-color: #E8E6F4;
+    width: 6%;
+}
+
 .icon {
-    width: 4vh;
+    width: 2vh;
+}
+
+.browseIcon {
+    /* padding-left: 30%; */
+    width: 2vh;
+    float: right;
+}
+
+.selectIcon {
+    cursor: pointer;
+    padding-left: 1vh;
+    float: left;
 }

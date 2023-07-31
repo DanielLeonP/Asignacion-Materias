@@ -1,0 +1,23 @@
+const orderByName = (data) => {
+    return data.sort((a, b) => {
+        return a[2].localeCompare(b[2])
+    });
+}
+export const todoReducer = (initialState, action) => {
+
+    switch (action.type) {
+        case '[DATA] Add Row':
+            return orderByName([...initialState, action.payload]);
+        case '[DATA] Delete Row':
+            return initialState.filter(data => data[1] !== action.payload);
+        case '[DATA] Edit Row':
+            return initialState.map((data, index) => {
+                if (index === action.payload.index) {
+                    return action.payload.newRow;
+                }
+                return data;
+            });
+        default:
+            return initialState;
+    }
+}

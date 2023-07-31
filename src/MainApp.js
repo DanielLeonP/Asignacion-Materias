@@ -8,7 +8,7 @@ export const MainApp = () => {
     return (
         <>
 
-            {/* <h1>Main App</h1>
+            <h1>Main App</h1>
             <hr />
 
             <Link to="/login">LoginPage</Link>
@@ -17,7 +17,7 @@ export const MainApp = () => {
             <br/>
             <Link to="/list">ListPage</Link>
 
-            <hr /> */}
+            <hr />
 
             <Routes>
                 <Route path="/login" element={<LoginPage />} />            
