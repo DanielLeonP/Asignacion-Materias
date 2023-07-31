@@ -5,7 +5,7 @@ export const LoginPage = () => {
   const [validando, setValidando] = useState(false);
   const [clave, setClave] = useState("");
   const [contrasena, setContrasena] = useState("");
-  
+
   const handleSubmit = (event) => {
     event.preventDefault(); // Evita que la página se recargue al enviar el formulario
     setValidando(true);
@@ -21,7 +21,7 @@ export const LoginPage = () => {
 
   return (
     <div>
-      <div className='carga' style={ validando ? { display: "grid"} : {display: "none"}}>
+      <div className='carga' style={validando ? { display: "grid" } : { display: "none" }}>
         <div className="three-body">
           <div className="three-body__dot"></div>
           <div className="three-body__dot"></div>
@@ -32,9 +32,9 @@ export const LoginPage = () => {
       <form className="container" onSubmit={handleSubmit}>
         <h1 className='title'>¡Bienvenido!</h1>
         <label className='input-title'>Clave</label>
-        <input type='text' placeholder='Clave' required value={clave} onChange={handleClaveChange}></input>
+        <input className='input-login' type='text' placeholder='Clave' required value={clave} onChange={handleClaveChange}></input>
         <label className='input-title'>Contraseña</label>
-        <input type='password' placeholder='Contraseña' required value={contrasena} onChange={handleContrasenaChange}></input>
+        <input className='input-login' type='password' placeholder='Contraseña' required value={contrasena} onChange={handleContrasenaChange}></input>
         <input type="submit" value="Ingresar"></input>
       </form>
     </div>
