@@ -43,21 +43,22 @@ export const RowTable = ({ columns, user, counter, onDeleteTodo, onEditTodo, col
     }
     // console.log(userDataEdit)
     const editCancel = () => {
-        seteditable(!editable)
+        seteditable(!editable);
+        columnsBeforeToEdit();
     }
     if (!editable) {
         return (
             <tr>
                 {columns.number ? <th className='editRowTable'>{counter + 1}</th> : ''}
                 {columns.grado ? <th className='editRowTable'><input name={'grado'} className='editRow' onChange={onInputChange} defaultValue={userData.grado} ></input></th> : ''}
-                {columns.clave ? <th className='editRowTable'><input name={'clave'} className='editRow' onChange={onInputChange} defaultValue={userData.clave} ></input></th> : ''}
+                {columns.clave ? <th className='editRowTable'><input type='number' name={'clave'} className='editRow' onChange={onInputChange} defaultValue={userData.clave} ></input></th> : ''}
                 {columns.profesor ? <th className='editRowTable'><input name={'profesor'} className='editRow' onChange={onInputChange} defaultValue={userData.profesor} ></input></th> : ''}
                 {columns.tipo ? <th className='editRowTable'><input name={'tipo'} className='editRow' onChange={onInputChange} defaultValue={userData.tipo} ></input></th> : ''}
                 {columns.nivel ? <th className='editRowTable'><input name={'nivel'} className='editRow' onChange={onInputChange} defaultValue={userData.nivel} ></input></th> : ''}
-                {columns.materias ? <th className='editRowTable'><input name={'materias'} className='editRow' onChange={onInputChange} defaultValue={userData.materias} ></input></th> : ''}
-                {columns.asignadas ? <th className='editRowTable'><input name={'asignadas'} className='editRow' onChange={onInputChange} defaultValue={userData.asignadas} ></input></th> : ''}
-                {columns.faltantes ? <th className='editRowTable'><input name={'faltantes'} className='editRow' onChange={onInputChange} defaultValue={userData.faltantes} ></input></th> : ''}
-                {columns.practicas ? <th className='editRowTable'><input name={'practicas'} className='editRow' onChange={onInputChange} defaultValue={userData.practicas} ></input></th> : ''}
+                {columns.materias ? <th className='editRowTable'><input type='number' name={'materias'} className='editRow' onChange={onInputChange} defaultValue={userData.materias} ></input></th> : ''}
+                {columns.asignadas ? <th className='editRowTable'><input type='number' name={'asignadas'} className='editRow' onChange={onInputChange} defaultValue={userData.asignadas} ></input></th> : ''}
+                {columns.faltantes ? <th className='editRowTable'><input type='number' name={'faltantes'} className='editRow' onChange={onInputChange} defaultValue={userData.faltantes} ></input></th> : ''}
+                {columns.practicas ? <th className='editRowTable'><input type='number' name={'practicas'} className='editRow' onChange={onInputChange} defaultValue={userData.practicas} ></input></th> : ''}
                 {columns.observaciones ? <th className='editRowTable'><input name={'observaciones'} className='editRow' onChange={onInputChange} defaultValue={userData.observaciones} ></input></th> : ''}
                 <th className='editRowTable'>
                     <a className='selectIcon'

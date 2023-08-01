@@ -10,21 +10,24 @@ import { AddRow } from './components/AddRow';
 // hooks
 import { ListHook } from './hooks/ListHook';
 
+import { CreateExcel } from './components/CreateExcel';
+
 
 export const ListPage = () => {
-  const { columns, setColumns, data, handleAddTodo, handleDeleteTodo, handleEditTodo, columnsInitialState, columnsBeforeToEdit } = ListHook();
+  const { columns, setColumns, data, handleAddTodo,
+    handleDeleteTodo, handleEditTodo, columnsInitialState, columnsBeforeToEdit,
+    info } = ListHook();
 
   return (
     <div className='container'>
       <div className='title'>Materias Asignadas</div>
 
       <div className='column3'>
-        <ItemColumn item={{ title: '# Materias', value: '5' }} />
-        <ItemColumn item={{ title: 'Restantes', value: '3' }} />
-        <ItemColumn item={{ title: 'Materias de profesores total', value: '2' }} />
-        <ItemColumn item={{ title: 'Prácticas total', value: '3' }} />
-        <ItemColumn item={{ title: 'Restantes asignadas', value: '3' }} />
-        <ItemColumn item={{ title: 'Observaciones total', value: '3' }} />
+        <ItemColumn item={{ title: '# Materias', value: info.materias }} />
+        <ItemColumn item={{ title: 'Restantes', value: info.mRestantes }} />
+        <ItemColumn item={{ title: 'Materias de profesores total', value: info.mProfesores }} />
+        <ItemColumn item={{ title: 'Prácticas total', value: info.practicas }} />
+        <ItemColumn item={{ title: 'Observaciones total', value: info.observaciones }} />
       </div>
 
       <AddRow onAddTodo={handleAddTodo} />
@@ -36,6 +39,8 @@ export const ListPage = () => {
           ? <UserTable data={data} columns={columns} onDeleteTodo={handleDeleteTodo} onEditTodo={handleEditTodo} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} />
           : ''
       }
+
+      <CreateExcel excelData={data} fileName={'Materias-Asignadas'} />
 
     </div>
   )
