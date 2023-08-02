@@ -11,12 +11,12 @@ export const todoReducer = (initialState, action) => {
         case '[DATA] Delete Row':
             return initialState.filter(data => data[1] !== action.payload);
         case '[DATA] Edit Row':
-            return initialState.map((data, index) => {
+            return orderByName(initialState.map((data, index) => {
                 if (index === action.payload.index) {
                     return action.payload.newRow;
                 }
                 return data;
-            });
+            }));
         default:
             return initialState;
     }

@@ -39,8 +39,11 @@ export const AddRow = ({ onAddTodo }) => {
     return (
         <div className='AddRow' >
             <a className='AddRowTitle' onClick={toggleMenuAddRow}>
-                Agregar Fila
-                <img src='../images/icons/navegar.png' className='browseIcon' />
+                <div className='divTest'>
+                    <div></div>
+                    Agregar Fila
+                    <img src='../images/icons/navegar.png' className='browseIcon' />
+                </div>
             </a>
             <form className={`collapse ${isOpenAddRow ? 'fieldsAddRow' : ''}`}>
                 <FieldProfessor name={'profesor'} field={{ value: userData.profesor, label: 'Nombre de profesor', type: 'text' }} setUserData={setUserData} userData={userData} />

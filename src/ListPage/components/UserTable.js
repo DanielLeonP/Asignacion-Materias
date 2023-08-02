@@ -2,12 +2,12 @@ import React from 'react'
 
 import { RowTable } from './RowTable'
 
-export const UserTable = ({ data, columns, onDeleteTodo, onEditTodo, columnsInitialState, columnsBeforeToEdit }) => {
+export const UserTable = ({ data, columns, onDeleteTodo, onEditTodo, columnsInitialState, columnsBeforeToEdit, colorTitle, color }) => {
     return (
         <div className='divTable'>
             <table>
                 <tbody>
-                    <tr className='headerTable'>
+                    <tr className='headerTable' style={{ backgroundColor: color }}>
                         {columns.number ? <th>#</th> : ''}
                         {columns.grado ? <th>Grado</th> : ''}
                         {columns.clave ? <th>Clave</th> : ''}
@@ -24,6 +24,7 @@ export const UserTable = ({ data, columns, onDeleteTodo, onEditTodo, columnsInit
                     {data.map((user, counter) => {
                         return (
                             <RowTable
+                                color={color}
                                 key={`row-${counter}-${user[1]}`}
                                 columns={columns}
                                 user={user}

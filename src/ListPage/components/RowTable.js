@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-export const RowTable = ({ columns, user, counter, onDeleteTodo, onEditTodo, columnsInitialState, columnsBeforeToEdit }) => {
+export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTodo, columnsInitialState, columnsBeforeToEdit }) => {
     const [editable, seteditable] = useState(true);
 
     const [userData, setUserData] = useState({
@@ -25,19 +25,19 @@ export const RowTable = ({ columns, user, counter, onDeleteTodo, onEditTodo, col
         })
     }
     const listoButton = () => {
-        setUserData(userDataEdit)
         onEditTodo(counter, [
-            userData.grado,
-            userData.clave,
-            userData.profesor,
-            userData.tipo,
-            userData.nivel,
-            userData.materias,
-            userData.asignadas,
-            userData.faltantes,
-            userData.practicas,
-            userData.observaciones
+            userDataEdit.grado,
+            userDataEdit.clave,
+            userDataEdit.profesor,
+            userDataEdit.tipo,
+            userDataEdit.nivel,
+            userDataEdit.materias,
+            userDataEdit.asignadas,
+            userDataEdit.faltantes,
+            userDataEdit.practicas,
+            userDataEdit.observaciones
         ]);
+        setUserData(userDataEdit)
         seteditable(!editable);
         columnsBeforeToEdit();
     }
@@ -53,7 +53,7 @@ export const RowTable = ({ columns, user, counter, onDeleteTodo, onEditTodo, col
                 {columns.grado ? <th className='editRowTable'><input name={'grado'} className='editRow' onChange={onInputChange} defaultValue={userData.grado} ></input></th> : ''}
                 {columns.clave ? <th className='editRowTable'><input type='number' name={'clave'} className='editRow' onChange={onInputChange} defaultValue={userData.clave} ></input></th> : ''}
                 {columns.profesor ? <th className='editRowTable'><input name={'profesor'} className='editRow' onChange={onInputChange} defaultValue={userData.profesor} ></input></th> : ''}
-                {columns.tipo ? <th className='editRowTable'><input name={'tipo'} className='editRow' onChange={onInputChange} defaultValue={userData.tipo} ></input></th> : ''}
+                {columns.tipo ? <th clasFsName='editRowTable'><input name={'tipo'} className='editRow' onChange={onInputChange} defaultValue={userData.tipo} ></input></th> : ''}
                 {columns.nivel ? <th className='editRowTable'><input name={'nivel'} className='editRow' onChange={onInputChange} defaultValue={userData.nivel} ></input></th> : ''}
                 {columns.materias ? <th className='editRowTable'><input type='number' name={'materias'} className='editRow' onChange={onInputChange} defaultValue={userData.materias} ></input></th> : ''}
                 {columns.asignadas ? <th className='editRowTable'><input type='number' name={'asignadas'} className='editRow' onChange={onInputChange} defaultValue={userData.asignadas} ></input></th> : ''}

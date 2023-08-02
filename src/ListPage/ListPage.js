@@ -13,8 +13,12 @@ import { ListHook } from './hooks/ListHook';
 import { CreateExcel } from './components/CreateExcel';
 
 export const ListPage = () => {
-  const { columns, setColumns, data, handleAddTodo,
-    handleDeleteTodo, handleEditTodo, columnsInitialState, columnsBeforeToEdit,
+  const { columns, setColumns, data, data2, data3,
+    handleAddTodo, handleDeleteTodo, handleEditTodo,
+    handleDeleteTodo2, handleAddTodo2, handleEditTodo2,
+    handleDeleteTodo3, handleAddTodo3, handleEditTodo3,
+
+    columnsInitialState, columnsBeforeToEdit,
     info } = ListHook();
 
   return (
@@ -35,7 +39,17 @@ export const ListPage = () => {
 
       {
         data.length > 0
-          ? <UserTable data={data} columns={columns} onDeleteTodo={handleDeleteTodo} onEditTodo={handleEditTodo} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} />
+          ? <UserTable color='blue' colorTitle={'blue'} data={data} columns={columns} onDeleteTodo={handleDeleteTodo} onEditTodo={handleEditTodo} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} />
+          : ''
+      }
+      {
+        data2.length > 0
+          ? <UserTable color='red' colorTitle={'red'} data={data2} columns={columns} onDeleteTodo={handleDeleteTodo2} onEditTodo={handleEditTodo2} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} />
+          : ''
+      }
+      {
+        data3.length > 0
+          ? <UserTable color='green' colorTitle={'green'} data={data3} columns={columns} onDeleteTodo={handleDeleteTodo3} onEditTodo={handleEditTodo3} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} />
           : ''
       }
 

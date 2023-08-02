@@ -2,8 +2,8 @@
     font-family: 'NEXA';
     src: url('../../public/assets/fonts/Nexa-Heavy.ttf') format('truetype');
 }
-z
-body {
+
+z body {
     font-family: 'NEXA', sans-serif;
     background: url('../../public/images/FIF.jpg');
     background-color: rgba(30, 55, 153, 0.70);
@@ -119,8 +119,27 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    padding: 0px 20px;
+    box-sizing: border-box;
 }
 
+.browseIcon {
+    /* padding-left: 30%; */
+    width: 2vh;
+    position: relative;
+    float: right;
+}
+
+.divTest {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .spanText{
+    display: flex;
+    justify-content: center;
+} */
 .inputRow {
     margin-left: 20px;
     padding: 0.5vh;
@@ -177,16 +196,16 @@ table {
 }
 
 tr {
-    background-color: white;
+    background-color: #dbd9ea;
 }
 
 tr:nth-child(even) {
-    background-color: #AAA5D4;
+    background-color: white;
 }
 
 .editRowTable {
     border: 3px solid #ABABAB;
-    background: #D4D1EA;
+    background-color: #D4D1EA;
     /* box-shadow: 0px 5px 50px 0px rgba(0, 0, 0, 0.80); */
     /* border: 20px; */
 }
@@ -214,12 +233,6 @@ tr:nth-child(even) {
     width: 2vh;
 }
 
-.browseIcon {
-    /* padding-left: 30%; */
-    width: 2vh;
-    float: right;
-}
-
 .selectIcon {
     cursor: pointer;
     padding-left: 1vh;
@@ -242,6 +255,7 @@ tr:nth-child(even) {
     border: none;
     cursor: pointer;
 }
-.btn-excel-export :hover{
+
+.btn-excel-export :hover {
     background-color: white;
 }
