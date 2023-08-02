@@ -26,7 +26,7 @@ export const MainApp = () => {
                 <Route path="/*" element={<Navigate to="/login" />} />
             </Routes>
 
-            {/* <footer>
+            <footer>
                 <div className='circulo circulo1'></div>
                 <div className='circulo circulo2'></div>
                 <div className='circulo circulo3'></div>
@@ -36,7 +36,7 @@ export const MainApp = () => {
                 <div className='circulo circulo7'></div>
                 <div className='circulo circulo8'></div>
                 <div className='circulo circulo9'></div>
-            </footer> */}
+            </footer>
 
         </>
     )

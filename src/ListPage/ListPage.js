@@ -12,7 +12,6 @@ import { ListHook } from './hooks/ListHook';
 
 import { CreateExcel } from './components/CreateExcel';
 
-
 export const ListPage = () => {
   const { columns, setColumns, data, handleAddTodo,
     handleDeleteTodo, handleEditTodo, columnsInitialState, columnsBeforeToEdit,
