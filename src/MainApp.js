@@ -1,14 +1,14 @@
 import React from 'react'
 import { Navigate, Route, Routes, Link } from 'react-router-dom'
 import { ListPage } from './ListPage/ListPage'
-import { FormPage } from './FormPage'
+import { FormPage } from './FormPage/FormPage'
 import { LoginPage } from './LoginPage'
 
 export const MainApp = () => {
     return (
         <>
 
-            <h1>Main App</h1>
+            {/* <h1>Main App</h1>
             <hr />
 
             <Link to="/login">LoginPage</Link>
@@ -17,7 +17,7 @@ export const MainApp = () => {
             <br/>
             <Link to="/list">ListPage</Link>
 
-            <hr />
+            <hr /> */}
 
             <Routes>
                 <Route path="/login" element={<LoginPage />} />            

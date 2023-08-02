@@ -10,7 +10,6 @@ import { AddRow } from './components/AddRow';
 // hooks
 import { ListHook } from './hooks/ListHook';
 
-
 export const ListPage = () => {
   const { columns, setColumns, data, handleAddTodo, handleDeleteTodo, handleEditTodo, columnsInitialState, columnsBeforeToEdit } = ListHook();
 

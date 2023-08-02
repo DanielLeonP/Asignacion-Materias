@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { RowTable } from './RowTable'
+
 export const UserTable = ({ data, columns, onDeleteTodo, onEditTodo, columnsInitialState, columnsBeforeToEdit }) => {
     return (
         <div className='divTable'>

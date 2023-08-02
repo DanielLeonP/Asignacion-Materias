@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './styles/GlobalStyles.css'
 
 export const LoginPage = () => {
+  const navigate = useNavigate();
   const [validando, setValidando] = useState(false);
   const [clave, setClave] = useState("");
   const [contrasena, setContrasena] = useState("");
@@ -9,6 +11,8 @@ export const LoginPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault(); // Evita que la página se recargue al enviar el formulario
     setValidando(true);
+    navigate("/form");
+    setValidando(false);
   }
 
   const handleClaveChange = (event) => {

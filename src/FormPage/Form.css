@@ -1,0 +1,37 @@
+
+/* input[type="file"]{
+    display: none;
+} */
+.margen{
+    margin-top: 2vh;
+}
+.menor{
+    margin: 5vh 10vw 0 10vw !important;
+}
+.file-upload {
+    width: 80%;
+    font-size: large;
+    font-weight: 600;
+    padding: 1% 0.8%;
+    margin: 1% 0 0 0;
+    border-radius: 10px;
+    text-align: center;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #000;
+}
+.file-upload:hover{
+    background-color: #d4d1ea;
+    cursor: pointer;
+}
+.file-upload input {
+    display: block;
+    width: 100%;
+    height: 5vh;
+    margin: -4vh 0 -5vh 0;
+    opacity: 0;
+    position: relative;
+    cursor: pointer;
+}

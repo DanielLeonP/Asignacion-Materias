@@ -1,16 +1,7 @@
 import { useReducer, useState, useEffect } from 'react'
 import { todoReducer } from '../helpers/todoReducer';
 
-// TEMPORAL PARA PROBAR FUNCIONES
-const dataTest = [['DR.', 4658, 'ACUÑA GARCIA JOSE ALFREDO', 'PTC', 'LICENCIATURA', 7, 0, 0, 0, 'Prueba de observación'],
-['DR.', 12115, 'AGUIRRE CARACHEO EDUARDO', 'PTC', 'LICENCIATURA', 4, 0, 0, 0, ''],
-['MSI.', 6746, 'ARREGUIN RICO SANDRA PATRICIA', 'PTC', 'LICENCIATURA', 3, 0, 3, 1, ''],
-['DRA.', 10267, 'CANCHOLA MAGDALENO SANDRA LUZ', 'PTC', 'LICENCIATURA', 4, 0, 4, 0, ''],
-['DR.', 4824, 'CHAPARRO SANCHEZ RICARDO', 'PTC', 'LICENCIATURA', 3, 0, 3, 0, ''],
-['DR.', 3604, 'CHAVEZ MORALES UBALDO', 'PTC', 'LICENCIATURA', 4, 0, 4, 0, ''],
-];
 const init = () => {
-    localStorage.setItem('data', JSON.stringify(dataTest));
     return JSON.parse(localStorage.getItem('data')) || [];
 }
 
@@ -34,8 +25,6 @@ export const ListHook = () => {
     const [data, dispatch] = useReducer(todoReducer, [], init);
 
     useEffect(() => {
-        console.log('ENTRA ----------------s--')
-        console.log(data)
         localStorage.setItem('data', JSON.stringify(data));
     }, [data])
 

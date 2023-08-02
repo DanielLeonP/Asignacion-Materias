@@ -2,7 +2,7 @@
     font-family: 'NEXA';
     src: url('../../public/assets/fonts/Nexa-Heavy.ttf') format('truetype');
 }
-
+z
 body {
     font-family: 'NEXA', sans-serif;
     background: url('../../public/images/FIF.jpg');
@@ -68,7 +68,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .field {
-    border-radius: 50px;
+    border-radius: 15px;
     background: #D4D1EA;
     width: 150%;
     height: 4ch;
