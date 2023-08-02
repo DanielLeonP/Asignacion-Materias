@@ -16,7 +16,7 @@ const initialStateColumns = {
     asignadas: true,
     faltantes: true,
     practicas: true,
-    observaciones: true
+    observaciones: true,
 }
 
 export const ListHook = () => {
@@ -35,8 +35,6 @@ export const ListHook = () => {
     });
 
     useEffect(() => {
-        // console.log('ENTRA ----------------s--')
-        // console.log(data)
         updateInfo();
         localStorage.setItem('data', JSON.stringify(data));
     }, [data])

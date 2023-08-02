@@ -25,14 +25,30 @@ export const ExcelReader = ({handleValidando}) => {
       const celdas = libro.Sheets[primerHoja];
       const excelData = XLSX.utils.sheet_to_json(celdas, { header: 1 });
 
-      const clearData = [];
-      for (let i = 0; i < excelData.length; i++){
-        if(excelData[i].length != 0 && excelData[i][3] != "CLAVE" && excelData[i][3] != null){
-          clearData.push([excelData[i][2] || "", excelData[i][3], excelData[i][4], excelData[i][5], excelData[i][6] || "", excelData[i][7] || "", excelData[i][8] || "", excelData[i][9] || "", excelData[i][10] || "", excelData[i][11] || ""])
+      const dataTC = [];
+      const dataTL = [];
+      const dataH = [];
+      let tipoProfesor = "";
+      excelData.filter(row => {
+        tipoProfesor = (row[4] == "Tiempos Completos" ? "TC" : (row[4] == "Tiempos Libres" ? "TL" : (row[4] == "Honorarios" ? "H" : tipoProfesor)))
+        if(row.length !== 0 && row[3] !== "CLAVE" && row[3] != null){
+          switch(tipoProfesor){
+            case "TC":
+              dataTC.push([row[2] || "", row[3], row[4], row[5], row[6] || "", row[7] || "", row[8] || "", row[9] || "", row[10] || "", row[11] || ""]);
+              break;
+            case "TL":
+              dataTL.push([row[2] || "", row[3], row[4], row[5], row[6] || "", row[7] || "", row[8] || "", row[9] || "", row[10] || "", row[11] || ""]);
+              break;
+            case "H":
+              dataH.push([row[2] || "", row[3], row[4], row[5], row[6] || "", row[7] || "", row[8] || "", row[9] || "", row[10] || "", row[11] || ""]);
+              break;
+          }
         }
-      }
+      })
 
-      localStorage.setItem('data', JSON.stringify(clearData));
+      localStorage.setItem('dataTC', JSON.stringify(dataTC));
+      localStorage.setItem('dataTL', JSON.stringify(dataTL));
+      localStorage.setItem('dataH', JSON.stringify(dataH));
       handleValidando(false);
       navigate("/list");
     };
