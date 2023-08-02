@@ -24,10 +24,39 @@ export const ListHook = () => {
     const [columnsBefore, setColumnsBefore] = useState(columns);
     const [data, dispatch] = useReducer(todoReducer, [], init);
 
+    // Datos 
+
+    const [info, setInfo] = useState({
+        materias: 0,
+        mRestantes: 0,
+        mProfesores: 0,
+        practicas: 0,
+        observaciones: 0
+    });
+
     useEffect(() => {
+        // console.log('ENTRA ----------------s--')
+        // console.log(data)
+        updateInfo();
         localStorage.setItem('data', JSON.stringify(data));
     }, [data])
 
+    const updateInfo = () => {
+        // let materias, mRestantes, mProfesores, practicas, observaciones = 0;
+
+        // data.forEach(user => {
+        //     console.log({ user })
+        //     materias = materias + parseInt(user[5]);
+        // });
+        // console.log(materias)
+        setInfo({
+            materias: 20,
+            mRestantes: 20,
+            mProfesores: 20,
+            practicas: 20,
+            observaciones: 20
+        });
+    }
 
     const handleDeleteTodo = (clave) => {
         dispatch({
@@ -65,6 +94,7 @@ export const ListHook = () => {
         handleDeleteTodo,
         handleEditTodo,
         columnsInitialState,
-        columnsBeforeToEdit
+        columnsBeforeToEdit,
+        info
     }
 }

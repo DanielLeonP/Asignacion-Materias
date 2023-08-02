@@ -125,7 +125,7 @@ body::-webkit-scrollbar-thumb {
     margin-left: 20px;
     padding: 0.5vh;
     border-radius: 8px;
-    background: #E8E6F4;
+    background-color: #E8E6F4;
     border: none;
     width: 60%;
 }
@@ -224,4 +224,24 @@ tr:nth-child(even) {
     cursor: pointer;
     padding-left: 1vh;
     float: left;
+}
+
+.btn-excel-export {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    padding: 1vh 0vh 1vh 0vh;
+    margin: 2vh 0vh 2vh 0vh;
+    flex-direction: column;
+
+    height: 10%;
+    width: 80%;
+    background-color: #32409E;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.btn-excel-export :hover{
+    background-color: white;
 }
