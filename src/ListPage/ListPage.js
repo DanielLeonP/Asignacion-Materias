@@ -33,7 +33,7 @@ export const ListPage = () => {
         <ItemColumn item={{ title: 'Observaciones total', value: info.observaciones }} />
       </div>
 
-      <AddRow onAddTodo={handleAddTodo} />
+      <AddRow handleAddTodo={handleAddTodo} handleAddTodo2={handleAddTodo2} handleAddTodo3={handleAddTodo3} />
 
       <Columns columns={columns} setColumns={setColumns} />
 

@@ -13,14 +13,15 @@ const initialValues = {
     practicas: '',
     observaciones: ''
 }
-export const AddRow = ({ onAddTodo }) => {
+export const AddRow = ({ handleAddTodo, handleAddTodo2, handleAddTodo3 }) => {
     const [isOpenAddRow, setIsOpenAddRow] = useState(false);
+    const [profesorType, setProfesorType] = useState('tiempo_completo');
 
     const toggleMenuAddRow = () => {
         setIsOpenAddRow(!isOpenAddRow);
     };
     const addRow = () => {
-        onAddTodo([
+        const dataToSend = [
             userData.grado,
             userData.clave,
             userData.profesor,
@@ -31,11 +32,33 @@ export const AddRow = ({ onAddTodo }) => {
             userData.faltantes,
             userData.practicas,
             userData.observaciones
-        ]);
-        setUserData(initialValues);
+        ];
+        switch (profesorType) {
+            case 'tiempo_completo':
+                // console.log('Insertado a tiempo_completo')
+                handleAddTodo(dataToSend);
+                setUserData(initialValues);
+                return;
+            case 'tiempo_libre':
+                // console.log('Insertado a tiempo_libre')
+                handleAddTodo2(dataToSend);
+                setUserData(initialValues);
+                return;
+            case 'honorarios':
+                // console.log('Insertado a honorarios')
+                handleAddTodo3(dataToSend);
+                setUserData(initialValues);
+                return;
+            default:
+                break;
+        }
     }
 
     const [userData, setUserData] = useState(initialValues);
+
+    const onRadioChange = (e) => {
+        setProfesorType(e.target.value)
+    }
     return (
         <div className='AddRow'>
             <a className='AddRowTitle' onClick={toggleMenuAddRow}>
@@ -55,11 +78,29 @@ export const AddRow = ({ onAddTodo }) => {
                 <FieldProfessor name={'observaciones'} field={{ value: userData.observaciones, label: 'Observaciones', type: 'text', placeholder: 'Observaciones' }} setUserData={setUserData} userData={userData} />
                 <div className="RadioGroup">
                     <label className='professorLabel'>Tiempo Completo:</label>
-                    <input type="radio" name="profesor" value="tiempo_completo"></input>
+                    <input
+                        type="radio"
+                        name="profesor"
+                        value="tiempo_completo"
+                        onChange={onRadioChange}
+                        checked={profesorType === "tiempo_completo"}
+                    ></input>
                     <label className='professorLabel'>Tiempo Libre:</label>
-                    <input type="radio" name="profesor" value="tiempo_libre"></input>
+                    <input
+                        type="radio"
+                        name="profesor"
+                        value="tiempo_libre"
+                        onChange={onRadioChange}
+                        checked={profesorType === "tiempo_libre"}
+                    ></input>
                     <label className='professorLabel'>Honorarios:</label>
-                    <input type="radio" name="profesor" value="honorarios"></input>
+                    <input
+                        type="radio"
+                        name="profesor"
+                        value="honorarios"
+                        onChange={onRadioChange}
+                        checked={profesorType === "honorarios"}
+                    ></input>
                 </div>
                 <div type='submit' className='submit' onClick={addRow}>Agregar</div>
             </form>
