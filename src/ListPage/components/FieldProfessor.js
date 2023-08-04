@@ -11,8 +11,8 @@ export const FieldProfessor = ({ field, name, userData, setUserData }) => {
 
     return (
         <div className='fieldProfessor'>
-            <label>{field.label}:</label>
-            <input className='inputRow' name={name} type={field.type} onChange={onInputChange} value={field.value}></input>
+            <label className='professorLabel'>{field.label}:</label>
+            <input className='inputRow' name={name} type={field.type} onChange={onInputChange} value={field.value} placeholder={field.placeholder}></input>
         </div>
     )
 }

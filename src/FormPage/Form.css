@@ -12,8 +12,8 @@
     width: 80%;
     font-size: large;
     font-weight: 600;
-    padding: 1% 0.8%;
-    margin: 1% 0 0 0;
+    padding: 1.7vh 1vw;
+    margin: 1vh 0 0 0;
     border-radius: 10px;
     text-align: center;
     outline: none;
@@ -21,17 +21,24 @@
     cursor: pointer;
     background-color: #fff;
     border: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
 }
 .file-upload:hover{
     background-color: #d4d1ea;
     cursor: pointer;
 }
 .file-upload input {
-    display: block;
+    display: flex;
     width: 100%;
-    height: 5vh;
-    margin: -4vh 0 -5vh 0;
+    height: 6vh;
     opacity: 0;
     position: relative;
     cursor: pointer;
+    margin: -5.5vh 0 0 0;
+}
+.file-title{
+    width: 100%;
 }

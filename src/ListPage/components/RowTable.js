@@ -41,7 +41,6 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
         seteditable(!editable);
         columnsBeforeToEdit();
     }
-    // console.log(userDataEdit)
     const editCancel = () => {
         seteditable(!editable);
         columnsBeforeToEdit();
@@ -75,34 +74,131 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
             </tr >
         );
     }
-    return (
-        <tr>
-            {columns.number ? <th>{counter + 1}</th> : ''}
-            {columns.grado ? <th>{userData.grado}</th> : ''}
-            {columns.clave ? <th>{userData.clave}</th> : ''}
-            {columns.profesor ? <th>{userData.profesor}</th> : ''}
-            {columns.tipo ? <th>{userData.tipo}</th> : ''}
-            {columns.nivel ? <th>{userData.nivel}</th> : ''}
-            {columns.materias ? <th>{userData.materias}</th> : ''}
-            {columns.asignadas ? <th>{userData.asignadas}</th> : ''}
-            {columns.faltantes ? <th>{userData.faltantes}</th> : ''}
-            {columns.practicas ? <th>{userData.practicas}</th> : ''}
-            {columns.observaciones ? <th>{userData.observaciones}</th> : ''}
-            < th className='noBackgroundColor' >
-                <a className='selectIcon'
-                    onClick={() => {
-                        seteditable(!editable);
-                        columnsInitialState();//Poner todas las columnas visibles para poder editar
-                    }}
-                >
-                    <img src='../images/icons/editar.png' className='icon' />
-                </a>
-                <a className='selectIcon'
-                    onClick={() => onDeleteTodo(userData.clave)}
-                >
-                    <img src='../images/icons/borrar.png' className='icon' />
-                </a>
-            </th >
-        </tr >
-    )
+
+    if(color == "blue"){
+        return (
+            <tr className='blue'>
+                {columns.number ? <th>{counter + 1}</th> : ''}
+                {columns.grado ? <th>{userData.grado}</th> : ''}
+                {columns.clave ? <th>{userData.clave}</th> : ''}
+                {columns.profesor ? <th>{userData.profesor}</th> : ''}
+                {columns.tipo ? <th>{userData.tipo}</th> : ''}
+                {columns.nivel ? <th>{userData.nivel}</th> : ''}
+                {columns.materias ? <th>{userData.materias}</th> : ''}
+                {columns.asignadas ? <th>{userData.asignadas}</th> : ''}
+                {columns.faltantes ? <th>{userData.faltantes}</th> : ''}
+                {columns.practicas ? <th>{userData.practicas}</th> : ''}
+                {columns.observaciones ? <th>{userData.observaciones}</th> : ''}
+                < th className='noBackgroundColor' >
+                    <a className='selectIcon'
+                        onClick={() => {
+                            seteditable(!editable);
+                            columnsInitialState(); // Poner todas las columnas visibles para poder editar
+                        }}
+                    >
+                        <img src='../images/icons/editar.png' className='icon' />
+                    </a>
+                    <a className='selectIcon'
+                        onClick={() => onDeleteTodo(userData.clave)}
+                    >
+                        <img src='../images/icons/borrar.png' className='icon' />
+                    </a>
+                </th >
+            </tr >
+        )
+    }else if(color == "red"){
+        return (
+            <tr className='red'>
+                {columns.number ? <th>{counter + 1}</th> : ''}
+                {columns.grado ? <th>{userData.grado}</th> : ''}
+                {columns.clave ? <th>{userData.clave}</th> : ''}
+                {columns.profesor ? <th>{userData.profesor}</th> : ''}
+                {columns.tipo ? <th>{userData.tipo}</th> : ''}
+                {columns.nivel ? <th>{userData.nivel}</th> : ''}
+                {columns.materias ? <th>{userData.materias}</th> : ''}
+                {columns.asignadas ? <th>{userData.asignadas}</th> : ''}
+                {columns.faltantes ? <th>{userData.faltantes}</th> : ''}
+                {columns.practicas ? <th>{userData.practicas}</th> : ''}
+                {columns.observaciones ? <th>{userData.observaciones}</th> : ''}
+                < th className='noBackgroundColor' >
+                    <a className='selectIcon'
+                        onClick={() => {
+                            seteditable(!editable);
+                            columnsInitialState(); // Poner todas las columnas visibles para poder editar
+                        }}
+                    >
+                        <img src='../images/icons/editar.png' className='icon' />
+                    </a>
+                    <a className='selectIcon'
+                        onClick={() => onDeleteTodo(userData.clave)}
+                    >
+                        <img src='../images/icons/borrar.png' className='icon' />
+                    </a>
+                </th >
+            </tr >
+        )
+    }else if(color == "green"){
+
+        return (
+            <tr className='green'>
+                {columns.number ? <th>{counter + 1}</th> : ''}
+                {columns.grado ? <th>{userData.grado}</th> : ''}
+                {columns.clave ? <th>{userData.clave}</th> : ''}
+                {columns.profesor ? <th>{userData.profesor}</th> : ''}
+                {columns.tipo ? <th>{userData.tipo}</th> : ''}
+                {columns.nivel ? <th>{userData.nivel}</th> : ''}
+                {columns.materias ? <th>{userData.materias}</th> : ''}
+                {columns.asignadas ? <th>{userData.asignadas}</th> : ''}
+                {columns.faltantes ? <th>{userData.faltantes}</th> : ''}
+                {columns.practicas ? <th>{userData.practicas}</th> : ''}
+                {columns.observaciones ? <th>{userData.observaciones}</th> : ''}
+                < th className='noBackgroundColor' >
+                    <a className='selectIcon'
+                        onClick={() => {
+                            seteditable(!editable);
+                            columnsInitialState(); // Poner todas las columnas visibles para poder editar
+                        }}
+                    >
+                        <img src='../images/icons/editar.png' className='icon' />
+                    </a>
+                    <a className='selectIcon'
+                        onClick={() => onDeleteTodo(userData.clave)}
+                    >
+                        <img src='../images/icons/borrar.png' className='icon' />
+                    </a>
+                </th >
+            </tr >
+        )
+    }
+
+    // return (
+    //     <tr>
+    //         {columns.number ? <th className='blue'>{counter + 1}</th> : ''}
+    //         {columns.grado ? <th className='blue'>{userData.grado}</th> : ''}
+    //         {columns.clave ? <th className='blue'>{userData.clave}</th> : ''}
+    //         {columns.profesor ? <th className='blue'>{userData.profesor}</th> : ''}
+    //         {columns.tipo ? <th className='blue'>{userData.tipo}</th> : ''}
+    //         {columns.nivel ? <th className='blue'>{userData.nivel}</th> : ''}
+    //         {columns.materias ? <th className='blue'>{userData.materias}</th> : ''}
+    //         {columns.asignadas ? <th className='blue'>{userData.asignadas}</th> : ''}
+    //         {columns.faltantes ? <th className='blue'>{userData.faltantes}</th> : ''}
+    //         {columns.practicas ? <th className='blue'>{userData.practicas}</th> : ''}
+    //         {columns.observaciones ? <th className='blue'>{userData.observaciones}</th> : ''}
+    //         < th className='noBackgroundColor' >
+    //             <a className='selectIcon'
+    //                 onClick={() => {
+    //                     seteditable(!editable);
+    //                     columnsInitialState(); // Poner todas las columnas visibles para poder editar
+    //                 }}
+    //             >
+    //                 <img src='../images/icons/editar.png' className='icon' />
+    //             </a>
+    //             <a className='selectIcon'
+    //                 onClick={() => onDeleteTodo(userData.clave)}
+    //             >
+    //                 <img src='../images/icons/borrar.png' className='icon' />
+    //             </a>
+    //         </th >
+    //     </tr >
+    // )
 }

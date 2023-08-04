@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navigate, Route, Routes, Link } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { ListPage } from './ListPage/ListPage'
 import { FormPage } from './FormPage/FormPage'
 import { LoginPage } from './LoginPage'
@@ -7,18 +7,6 @@ import { LoginPage } from './LoginPage'
 export const MainApp = () => {
     return (
         <>
-
-            {/* <h1>Main App</h1>
-            <hr />
-
-            <Link to="/login">LoginPage</Link>
-            <br/>
-            <Link to="/form">FormPage</Link>
-            <br/>
-            <Link to="/list">ListPage</Link>
-
-            <hr /> */}
-
             <Routes>
                 <Route path="/login" element={<LoginPage />} />            
                 <Route path="/form" element={<FormPage />} />
@@ -37,7 +25,6 @@ export const MainApp = () => {
                 <div className='circulo circulo8'></div>
                 <div className='circulo circulo9'></div>
             </footer>
-
         </>
     )
 }

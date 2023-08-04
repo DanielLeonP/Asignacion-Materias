@@ -29,22 +29,24 @@ export const ExcelReader = ({handleValidando}) => {
       const dataTL = [];
       const dataH = [];
       let tipoProfesor = "";
-      excelData.filter(row => {
-        tipoProfesor = (row[4] == "Tiempos Completos" ? "TC" : (row[4] == "Tiempos Libres" ? "TL" : (row[4] == "Honorarios" ? "H" : tipoProfesor)))
-        if(row.length !== 0 && row[3] !== "CLAVE" && row[3] != null){
+      for (let i = 0; i < excelData.length; i++) {
+        tipoProfesor = (excelData[i][4] === "Tiempos Completos" ? "TC" : (excelData[i][4] === "Tiempos Libres" ? "TL" : (excelData[i][4] === "Honorarios" ? "H" : tipoProfesor)))
+        if(excelData[i].length !== 0 && excelData[i][3] !== "CLAVE" && excelData[i][3] != null){
           switch(tipoProfesor){
             case "TC":
-              dataTC.push([row[2] || "", row[3], row[4], row[5], row[6] || "", row[7] || "", row[8] || "", row[9] || "", row[10] || "", row[11] || ""]);
+              dataTC.push([excelData[i][2] || "", excelData[i][3], excelData[i][4], excelData[i][5], excelData[i][6] || "", excelData[i][7] || "", excelData[i][8] || "", excelData[i][9] || "", excelData[i][10] || "", excelData[i][11] || ""]);
               break;
             case "TL":
-              dataTL.push([row[2] || "", row[3], row[4], row[5], row[6] || "", row[7] || "", row[8] || "", row[9] || "", row[10] || "", row[11] || ""]);
+              dataTL.push([excelData[i][2] || "", excelData[i][3], excelData[i][4], excelData[i][5], excelData[i][6] || "", excelData[i][7] || "", excelData[i][8] || "", excelData[i][9] || "", excelData[i][10] || "", excelData[i][11] || ""]);
               break;
             case "H":
-              dataH.push([row[2] || "", row[3], row[4], row[5], row[6] || "", row[7] || "", row[8] || "", row[9] || "", row[10] || "", row[11] || ""]);
+              dataH.push([excelData[i][2] || "", excelData[i][3], excelData[i][4], excelData[i][5], excelData[i][6] || "", excelData[i][7] || "", excelData[i][8] || "", excelData[i][9] || "", excelData[i][10] || "", excelData[i][11] || ""]);
+              break;
+            default:
               break;
           }
         }
-      })
+      }
 
       localStorage.setItem('dataTC', JSON.stringify(dataTC));
       localStorage.setItem('dataTL', JSON.stringify(dataTL));
@@ -59,8 +61,8 @@ export const ExcelReader = ({handleValidando}) => {
   return (
     <>
       <div className="file-upload">
-        <label>{selectedName}</label>
-        <input type="file" required ref={fileInputRef} onChange={handleUploadName}/><br></br>
+        <label className="file-title">{selectedName}</label>
+        <input type="file" required ref={fileInputRef} onChange={handleUploadName}/>
       </div>
       <input type="submit" value="Leer Datos" onClick={handleFileChange}></input>
     </>

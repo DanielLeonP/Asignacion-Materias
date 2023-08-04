@@ -59,7 +59,6 @@ body::-webkit-scrollbar-thumb {
 
 .itemColumn {
     margin: 0vh 5vh 0vh 5vh;
-    /* content: vh vh vh vh; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,7 +89,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 .collapse {
-    /* visibility: hidden; */
     overflow: hidden;
     max-height: 0px;
     transition: max-height 0.6s;
@@ -98,15 +96,14 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
 }
 
 .fieldsAddRow {
-    /* visibility: visible; */
     max-height: 1000px;
     transition: max-height 0.6s;
     height: auto;
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -114,112 +111,107 @@ body::-webkit-scrollbar-thumb {
 }
 
 .AddRowTitle {
-    width: 100%;
+    width: 90%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     cursor: pointer;
-    padding: 0px 20px;
+    padding: 0.5vh 0;
     box-sizing: border-box;
 }
-
+.AddRowLabel {
+    width: 90%;
+    text-align: center;
+    padding: 0 0 0 2vh;
+}
 .browseIcon {
-    /* padding-left: 30%; */
     width: 2vh;
     position: relative;
     float: right;
 }
 
-.divTest {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-/* .spanText{
-    display: flex;
-    justify-content: center;
-} */
 .inputRow {
     margin-left: 20px;
-    padding: 0.5vh;
-    border-radius: 8px;
-    background-color: #E8E6F4;
+    padding: 1vh 1vw;
+    border-radius: 10px;
+    background-color: #fff;
     border: none;
-    width: 60%;
+    width: 70%;
+    outline: none;
+    border: 1px solid #000;
+    text-align: center;
 }
-
 .fieldProfessor {
+    width: 90%;
     margin-top: 2vh;
-    width: 50%;
     display: flex;
     flex-direction: row;
     justify-content: right;
-    align-items: right;
+    align-items: center;
 }
-
 .submit {
     border-radius: 50px;
     background: #32409E;
-    padding: 1vh 5vh 1vh 5vh;
-    margin: 1vh 5vh 1vh 5vh;
+    padding: 1vh 10vh 1vh 10vh;
+    margin: 3vh 5vh 3vh 5vh;
     color: white;
     cursor: pointer;
 }
+.submit:hover{ background-color: #1F2E86; }
+.submit:active{ background-color: #1B1E62; }
 
 .fieldsColumn {
-    width: 90%;
-    margin-top: 2vh;
+    width: 70%;
+    margin: 2vh 0 0 0;
+    padding: 0 0 2vh 0;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1% 10%;
-    white-space: nowrap;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-gap: 1vh 15vh;
 }
 
 .divTable {
-    width: 95%;
-    overflow-x: auto;
-    display: flex;
+    width: 100%;
+    overflow: auto;
     align-items: center;
     justify-content: center;
     margin: 1vh 0vh 2vh 0vh;
     padding: 4px;
-
-    /* padding: 2vh 5vh 2vh 5vh; */
 }
-
-table {
-    width: 100%;
-    /* background-color: rebeccapurple; */
-    /* margin: 1vh 0vh 2vh 0vh; */
-    /* overflow-x: auto; */
+th{
+    font-size: small;
+    padding: 0.3vh 1vh;
 }
-
-tr {
-    background-color: #dbd9ea;
+.red {
+    background-color: rgba(255, 118, 117, 0.2);
 }
-
-tr:nth-child(even) {
-    background-color: white;
+.red:nth-child(even) {
+    background-color: whitesmoke;
+}
+.green {
+    background-color: rgba(85, 239, 196, 0.2);
+}
+.green:nth-child(even) {
+    background-color: whitesmoke;
+}
+.blue {
+    background-color: rgba(116, 185, 255, 0.2);
+}
+.blue:nth-child(even) {
+    background-color: whitesmoke;
 }
 
 .editRowTable {
     border: 3px solid #ABABAB;
     background-color: #D4D1EA;
-    /* box-shadow: 0px 5px 50px 0px rgba(0, 0, 0, 0.80); */
-    /* border: 20px; */
 }
-
 .headerTable {
     background-color: #32409E;
     color: white;
 }
-
 .editRow {
     border: 1px solid #ccc;
     font-family: inherit;
     padding: 1px 6px;
-    /* position: relative; */
     width: 70%;
     min-width: 1px;
 }
@@ -255,7 +247,40 @@ tr:nth-child(even) {
     border: none;
     cursor: pointer;
 }
+.btn-excel-export:hover{ background-color: #1F2E86; }
+.btn-excel-export:active{ background-color: #1B1E62; }
 
-.btn-excel-export :hover {
-    background-color: white;
+/* ------------------------------------------------------- */
+input[type="checkbox"]{
+    margin: 0 1vh 0 0;
+    width: 2.5vh;
+    height: 2.5vh;
+    accent-color: #1e3799;
+}
+input[type="radio"]{
+    margin: 0 0 0 4vh;
+    width: 3vh;
+    height: 3vh;
+    accent-color: #1e3799;
+}
+.fieldColumn{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.RadioGroup{
+    width: 90%;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    margin: 3vh 0 0 0;
+    padding: 0 0 0 10vh;
+    grid-gap: 1vh 5vh;
+}
+.professorLabel{
+    width: 22vh;
+    text-align: right;
+}
+.titleTabla{
+    margin: 2vh 0 0 0;
 }
