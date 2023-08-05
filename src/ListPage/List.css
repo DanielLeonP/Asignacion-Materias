@@ -258,7 +258,7 @@ input[type="checkbox"]{
     accent-color: #1e3799;
 }
 input[type="radio"]{
-    margin: 0 0 0 4vh;
+    margin: 0 0 0 2vh;
     width: 3vh;
     height: 3vh;
     accent-color: #1e3799;
@@ -275,7 +275,7 @@ input[type="radio"]{
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     margin: 3vh 0 0 0;
     padding: 0 0 0 10vh;
-    grid-gap: 1vh 5vh;
+    grid-gap: 1vh 4vh;
 }
 .professorLabel{
     width: 22vh;
