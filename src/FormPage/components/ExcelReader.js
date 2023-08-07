@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as XLSX from 'xlsx'
 
-export const ExcelReader = ({handleValidando}) => {
+export const ExcelReader = ({ handleValidando }) => {
   const navigate = useNavigate();
   const [selectedName, setSelectedName] = useState("Sube tu archivo excel");
   const fileInputRef = useRef(null);
@@ -31,16 +31,16 @@ export const ExcelReader = ({handleValidando}) => {
       let tipoProfesor = "";
       for (let i = 0; i < excelData.length; i++) {
         tipoProfesor = (excelData[i][4] === "Tiempos Completos" ? "TC" : (excelData[i][4] === "Tiempos Libres" ? "TL" : (excelData[i][4] === "Honorarios" ? "H" : tipoProfesor)))
-        if(excelData[i].length !== 0 && excelData[i][3] !== "CLAVE" && excelData[i][3] != null){
-          switch(tipoProfesor){
+        if (excelData[i].length !== 0 && excelData[i][3] !== "CLAVE" && excelData[i][3] != null) {
+          switch (tipoProfesor) {
             case "TC":
-              dataTC.push([excelData[i][2] || "", excelData[i][3], excelData[i][4], excelData[i][5], excelData[i][6] || "", excelData[i][7] || "", excelData[i][8] || "", excelData[i][9] || "", excelData[i][10] || "", excelData[i][11] || ""]);
+              dataTC.push([excelData[i][2] || 0, excelData[i][3], excelData[i][4], excelData[i][5], excelData[i][6] || 0, excelData[i][7] || 0, excelData[i][8] || 0, excelData[i][9] || 0, excelData[i][10] || 0, excelData[i][11] || ""]);
               break;
             case "TL":
-              dataTL.push([excelData[i][2] || "", excelData[i][3], excelData[i][4], excelData[i][5], excelData[i][6] || "", excelData[i][7] || "", excelData[i][8] || "", excelData[i][9] || "", excelData[i][10] || "", excelData[i][11] || ""]);
+              dataTL.push([excelData[i][2] || 0, excelData[i][3], excelData[i][4], excelData[i][5], excelData[i][6] || 0, excelData[i][7] || 0, excelData[i][8] || 0, excelData[i][9] || 0, excelData[i][10] || 0, excelData[i][11] || ""]);
               break;
             case "H":
-              dataH.push([excelData[i][2] || "", excelData[i][3], excelData[i][4], excelData[i][5], excelData[i][6] || "", excelData[i][7] || "", excelData[i][8] || "", excelData[i][9] || "", excelData[i][10] || "", excelData[i][11] || ""]);
+              dataH.push([excelData[i][2] || 0, excelData[i][3], excelData[i][4], excelData[i][5], excelData[i][6] || 0, excelData[i][7] || 0, excelData[i][8] || 0, excelData[i][9] || 0, excelData[i][10] || 0, excelData[i][11] || ""]);
               break;
             default:
               break;
@@ -54,7 +54,7 @@ export const ExcelReader = ({handleValidando}) => {
       handleValidando(false);
       navigate("/list");
     };
-  
+
     reader.readAsBinaryString(file);
   };
 
@@ -62,7 +62,7 @@ export const ExcelReader = ({handleValidando}) => {
     <>
       <div className="file-upload">
         <label className="file-title">{selectedName}</label>
-        <input type="file" required ref={fileInputRef} onChange={handleUploadName}/>
+        <input type="file" required ref={fileInputRef} onChange={handleUploadName} />
       </div>
       <input type="submit" value="Leer Datos" onClick={handleFileChange}></input>
     </>

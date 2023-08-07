@@ -27,8 +27,8 @@ export const ListPage = () => {
 
       <div className='column3'>
         <ItemColumn item={{ title: '# Materias', value: info.materias }} />
-        <ItemColumn item={{ title: 'Restantes', value: info.mRestantes }} />
-        <ItemColumn item={{ title: 'Materias de profesores total', value: info.mProfesores }} />
+        <ItemColumn item={{ title: 'Materias Restantes', value: info.mRestantes }} />
+        <ItemColumn item={{ title: 'Materias asignadas total', value: info.mAsignadas }} />
         <ItemColumn item={{ title: 'Prácticas total', value: info.practicas }} />
         <ItemColumn item={{ title: 'Observaciones total', value: info.observaciones }} />
       </div>

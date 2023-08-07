@@ -46,6 +46,8 @@ const createHandleToData = (dispatch) => {
     return [handleDeleteTodo, handleAddTodo, handleEditTodo]
 }
 export const ListHook = () => {
+    const materiasForm = 200;// CAMBIAR A POR LO QUE VIENE DEL FORM
+
     const [columns, setColumns] = useState(initialStateColumns);
     const [columnsBefore, setColumnsBefore] = useState(columns);
     const [data, dispatch] = useReducer(todoReducer, [], () => init('dataTC'));
@@ -64,9 +66,10 @@ export const ListHook = () => {
     const [info, setInfo] = useState({
         materias: 0,
         mRestantes: 0,
-        mProfesores: 0,
+        mAsignadas: 0,
         practicas: 0,
-        observaciones: 0
+        observaciones: 0,
+        faltantes: 0
     });
 
     useEffect(() => {
@@ -74,22 +77,41 @@ export const ListHook = () => {
         setLocalStorage('dataTC', data);
         setLocalStorage('dataTL', data2);
         setLocalStorage('dataH', data3);
-    }, [data])
+    }, [data, data2, data3])
 
+    const isNumber = (value) => {
+        if (!isNaN(value)) {
+            return value;
+        }
+        return 0;
+    }
     const updateInfo = () => {
-        // let materias, mRestantes, mProfesores, practicas, observaciones = 0;
 
-        // data.forEach(user => {
-        //     console.log({ user })
-        //     materias = materias + parseInt(user[5]);
-        // });
-        // console.log(materias)
+        const values1 = data.map(item => {
+            return { materias: isNumber(item[5]), asignadas: isNumber(item[6]), faltantes: isNumber(item[7]), practicas: isNumber(item[8]), observaciones: item[9] === "" ? 0 : 1 }
+        });
+        const values2 = data2.map(item => {
+            return { materias: isNumber(item[5]), asignadas: isNumber(item[6]), faltantes: isNumber(item[7]), practicas: isNumber(item[8]), observaciones: item[9] === "" ? 0 : 1 }
+        });
+        const values3 = data3.map(item => {
+            return { materias: isNumber(item[5]), asignadas: isNumber(item[6]), faltantes: isNumber(item[7]), practicas: isNumber(item[8]), observaciones: item[9] === "" ? 0 : 1 }
+        });
+
+        const values = values1.concat(values2).concat(values3);
+
+        const materias = values.map(value => value.materias).reduce((prev, curr) => prev + curr, 0);
+        const asignadas = values.map(value => value.asignadas).reduce((prev, curr) => prev + curr, 0);
+        const faltantes = values.map(value => value.faltantes).reduce((prev, curr) => prev + curr, 0);
+        const practicas = values.map(value => value.practicas).reduce((prev, curr) => prev + curr, 0);
+        const observaciones = values.map(value => value.observaciones).reduce((prev, curr) => prev + curr, 0);
+
         setInfo({
-            materias: 20,
-            mRestantes: 20,
-            mProfesores: 20,
-            practicas: 20,
-            observaciones: 20
+            materias: materiasForm,
+            mRestantes: materiasForm - materias,
+            mAsignadas: asignadas,
+            practicas: practicas,
+            faltantes: faltantes,
+            observaciones: observaciones
         });
     }
 

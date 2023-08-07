@@ -23,14 +23,14 @@ export const AddRow = ({ handleAddTodo, handleAddTodo2, handleAddTodo3 }) => {
     const addRow = () => {
         const dataToSend = [
             userData.grado,
-            userData.clave,
+            parseInt(userData.clave),
             userData.profesor,
             userData.tipo,
             userData.nivel,
-            userData.materias,
-            userData.asignadas,
-            userData.faltantes,
-            userData.practicas,
+            parseInt(userData.materias),
+            parseInt(userData.asignadas),
+            parseInt(userData.faltantes),
+            parseInt(userData.practicas),
             userData.observaciones
         ];
         switch (profesorType) {

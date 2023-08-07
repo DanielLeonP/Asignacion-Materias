@@ -8,7 +8,7 @@ export const MainApp = () => {
     return (
         <>
             <Routes>
-                <Route path="/login" element={<LoginPage />} />            
+                <Route path="/login" element={<LoginPage />} />
                 <Route path="/form" element={<FormPage />} />
                 <Route path="/list" element={<ListPage />} />
                 <Route path="/*" element={<Navigate to="/login" />} />
