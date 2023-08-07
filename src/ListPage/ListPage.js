@@ -6,13 +6,13 @@ import { ItemColumn } from './components/ItemColumn'
 import { UserTable } from './components/UserTable';
 import { Columns } from './components/Columns';
 import { AddRow } from './components/AddRow';
+import { CreateExcel } from './components/CreateExcel';
 
 // hooks
 import { ListHook } from './hooks/ListHook';
 
-import { CreateExcel } from './components/CreateExcel';
-
 export const ListPage = () => {
+
   const { columns, setColumns, data, data2, data3,
     handleAddTodo, handleDeleteTodo, handleEditTodo,
     handleDeleteTodo2, handleAddTodo2, handleEditTodo2,
@@ -38,17 +38,17 @@ export const ListPage = () => {
       <Columns columns={columns} setColumns={setColumns} />
 
       {
-        data.length > 0
+        data.length > 0 //Mostrar tabla de profesores de tiempo completo si tiene datos
           ? <><label className="titleTabla">Tiempos Completos</label><UserTable color='blue' colorTitle={'blue'} data={data} columns={columns} onDeleteTodo={handleDeleteTodo} onEditTodo={handleEditTodo} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
           : ''
       }
       {
-        data2.length > 0
+        data2.length > 0 //Mostrar tabla de profesores de tiempo libre si tiene datos
           ? <><label className="titleTabla">Tiempos Libres</label><UserTable color='red' colorTitle={'red'} data={data2} columns={columns} onDeleteTodo={handleDeleteTodo2} onEditTodo={handleEditTodo2} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
           : ''
       }
       {
-        data3.length > 0
+        data3.length > 0 //Mostrar tabla de profesores por honorarios si tiene datos
           ? <><label className="titleTabla">Honorarios</label><UserTable color='green' colorTitle={'green'} data={data3} columns={columns} onDeleteTodo={handleDeleteTodo3} onEditTodo={handleEditTodo3} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
           : ''
       }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FieldProfessor } from './FieldProfessor';
 
-const initialValues = {
+const initialValues = { //Valores para estado inicial de los inputs
     grado: '',
     clave: '',
     profesor: '',
@@ -14,14 +14,14 @@ const initialValues = {
     observaciones: ''
 }
 export const AddRow = ({ handleAddTodo, handleAddTodo2, handleAddTodo3 }) => {
-    const [isOpenAddRow, setIsOpenAddRow] = useState(false);
-    const [profesorType, setProfesorType] = useState('tiempo_completo');
+    const [isOpenAddRow, setIsOpenAddRow] = useState(false); //Estado para desglosar el formulario
+    const [profesorType, setProfesorType] = useState('tiempo_completo'); //Estado para saber  en que tabla insertar datos
 
-    const toggleMenuAddRow = () => {
+    const toggleMenuAddRow = () => { //Función para cambiar de estado de desglosar formulario
         setIsOpenAddRow(!isOpenAddRow);
     };
-    const addRow = () => {
-        const dataToSend = [
+    const addRow = () => { //Función para agregar datos a la tabla seleccionada
+        const dataToSend = [ //Preparación de datos para ser agregados
             userData.grado,
             parseInt(userData.clave),
             userData.profesor,
@@ -33,7 +33,7 @@ export const AddRow = ({ handleAddTodo, handleAddTodo2, handleAddTodo3 }) => {
             parseInt(userData.practicas),
             userData.observaciones
         ];
-        switch (profesorType) {
+        switch (profesorType) { //Switch para saber a que tabla agregar los datos
             case 'tiempo_completo':
                 // console.log('Insertado a tiempo_completo')
                 handleAddTodo(dataToSend);
@@ -54,16 +54,21 @@ export const AddRow = ({ handleAddTodo, handleAddTodo2, handleAddTodo3 }) => {
         }
     }
 
-    const [userData, setUserData] = useState(initialValues);
+    const [userData, setUserData] = useState(initialValues); //Estado de los datos del profesor
 
-    const onRadioChange = (e) => {
+    const onRadioChange = (e) => { //Cambiar el estado de la tabla a la que se debe agregar los datos del profesor
         setProfesorType(e.target.value)
     }
     return (
         <div className='AddRow'>
             <a className='AddRowTitle' onClick={toggleMenuAddRow}>
                 <label className="AddRowLabel">Agregar Fila</label>
-                <img src='../images/icons/navegar.png' className='browseIcon' />
+                {
+                    isOpenAddRow
+                        ? <img src='../images/icons/navegarArriba.png' className='browseIcon' />
+                        : <img src='../images/icons/navegar.png' className='browseIcon' />
+                }
+
             </a>
             <form className={`collapse ${isOpenAddRow ? 'fieldsAddRow' : ''}`}>
                 <FieldProfessor name={'profesor'} field={{ value: userData.profesor, label: 'Nombre de profesor', type: 'text', placeholder: 'Nombre de profesor' }} setUserData={setUserData} userData={userData} />

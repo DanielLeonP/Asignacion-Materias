@@ -1,15 +1,23 @@
 import React, { useState } from 'react'
 export const Columns = ({ columns, setColumns }) => {
-    const [isOpenColumns, setIsOpenColumns] = useState(false);
 
-    const toggleMenuColumns = () => {
+    const [isOpenColumns, setIsOpenColumns] = useState(false); //Estado para desglozar o contraer la opción de columnas
+
+    const toggleMenuColumns = () => { //Cambiar el estado para desglozar o contraer la opción de columnas
         setIsOpenColumns(!isOpenColumns);
     };
 
     return (
         <div className='AddRow'>
-            <a onClick={toggleMenuColumns} className='AddRowTitle'> Columnas</a>
-            {/* {isOpenColumns && ( */}
+            <a className='AddRowTitle' onClick={toggleMenuColumns}>
+                <label className="AddRowLabel">Columnas</label>
+                {
+                    isOpenColumns
+                        ? <img src='../images/icons/navegarArriba.png' className='browseIcon' />
+                        : <img src='../images/icons/navegar.png' className='browseIcon' />
+                }
+
+            </a>
             <div className={` collapse ${isOpenColumns ? 'fieldsAddRow' : ''}`}>
                 <div className='fieldsColumn'>
                     <div className='fieldColumn'>

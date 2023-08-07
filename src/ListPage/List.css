@@ -120,6 +120,7 @@ body::-webkit-scrollbar-thumb {
     box-sizing: border-box;
 }
 .AddRowLabel {
+    cursor: pointer;
     width: 90%;
     text-align: center;
     padding: 0 0 0 2vh;
