@@ -53,7 +53,7 @@ export const ListPage = () => {
           : ''
       }
 
-      <CreateExcel excelData={data} fileName={'Materias-Asignadas'} />
+      <CreateExcel excelData={[data, data2, data3]} fileName={'Materias-Asignadas'} />
 
     </div>
   )

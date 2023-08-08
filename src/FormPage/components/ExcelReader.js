@@ -25,13 +25,13 @@ export const ExcelReader = ({ handleValidando }) => {
       const celdas = libro.Sheets[primerHoja];
       const excelData = XLSX.utils.sheet_to_json(celdas, { header: 1 });
 
-      const dataTC = [];
-      const dataTL = [];
-      const dataH = [];
-      let tipoProfesor = "";
+      if(excelData[2] == ""){
+        excelData.forEach(row => row.shift())
+      }
+      let dataTC = []; let dataTL = []; let dataH = []; let tipoProfesor = "";
       for (let i = 0; i < excelData.length; i++) {
         tipoProfesor = (excelData[i][4] === "Tiempos Completos" ? "TC" : (excelData[i][4] === "Tiempos Libres" ? "TL" : (excelData[i][4] === "Honorarios" ? "H" : tipoProfesor)))
-        if (excelData[i].length !== 0 && excelData[i][3] !== "CLAVE" && excelData[i][3] != null) {
+        if (excelData[i].length !== 0 && excelData[i][3] !== "CLAVE" && excelData[i][3] != null && excelData[i][3] != "") {
           switch (tipoProfesor) {
             case "TC":
               dataTC.push([excelData[i][2] || 0, excelData[i][3], excelData[i][4], excelData[i][5], excelData[i][6] || 0, excelData[i][7] || 0, excelData[i][8] || 0, excelData[i][9] || 0, excelData[i][10] || 0, excelData[i][11] || ""]);
