@@ -46,7 +46,7 @@ const createHandleToData = (dispatch) => { //Métodos para funciones relacionada
     return [handleDeleteTodo, handleAddTodo, handleEditTodo]
 }
 export const ListHook = () => {
-    const materiasForm = 200;// CAMBIAR A POR LO QUE VIENE DEL FORM
+    const materiasForm = 500;// CAMBIAR A POR LO QUE VIENE DEL FORM
 
     const [columns, setColumns] = useState(initialStateColumns); //Estado de columnas que se muestran de la tabla
     const [columnsBefore, setColumnsBefore] = useState(columns); //Estado anterior al actual de las columnas en las tablas
@@ -108,6 +108,10 @@ export const ListHook = () => {
         const faltantes = values.map(value => value.faltantes).reduce((prev, curr) => prev + curr, 0);
         const practicas = values.map(value => value.practicas).reduce((prev, curr) => prev + curr, 0);
         const observaciones = values.map(value => value.observaciones).reduce((prev, curr) => prev + curr, 0);
+
+        if ((materiasForm - materias) < 0) {
+            window.alert('El número de materias restantes sobrepasa el número de materias');
+        }
 
         setInfo({ //Enviar estado de la información
             materias: materiasForm,
