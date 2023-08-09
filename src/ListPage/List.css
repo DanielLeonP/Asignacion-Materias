@@ -285,3 +285,12 @@ input[type="radio"]{
 .titleTabla{
     margin: 2vh 0 0 0;
 }
+.fieldLabel{
+    width: 10vw;
+}
+.tablas{
+    width: 100%;
+    text-align: center;
+    display: grid;
+    justify-content: center;
+}

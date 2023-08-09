@@ -1,3 +1,5 @@
+import {useLocation} from 'react-router-dom'
+
 // Styles
 import './List.css'
 
@@ -12,6 +14,8 @@ import { CreateExcel } from './components/CreateExcel';
 import { ListHook } from './hooks/ListHook';
 
 export const ListPage = () => {
+  const location = useLocation();
+  const materiasTotales = location.state?.materias || 0;
 
   const { columns, setColumns, data, data2, data3,
     handleAddTodo, handleDeleteTodo, handleEditTodo,
@@ -19,7 +23,7 @@ export const ListPage = () => {
     handleDeleteTodo3, handleAddTodo3, handleEditTodo3,
 
     columnsInitialState, columnsBeforeToEdit,
-    info } = ListHook();
+    info } = ListHook(materiasTotales);
 
   return (
     <div className='container'>
@@ -37,21 +41,23 @@ export const ListPage = () => {
 
       <Columns columns={columns} setColumns={setColumns} />
 
+      <div className="tablas">
       {
-        data.length > 0 //Mostrar tabla de profesores de tiempo completo si tiene datos
+        data.length > 0 // Mostrar tabla de profesores de tiempo completo si tiene datos
           ? <><label className="titleTabla">Tiempos Completos</label><UserTable color='blue' colorTitle={'blue'} data={data} columns={columns} onDeleteTodo={handleDeleteTodo} onEditTodo={handleEditTodo} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
           : ''
       }
       {
-        data2.length > 0 //Mostrar tabla de profesores de tiempo libre si tiene datos
+        data2.length > 0 // Mostrar tabla de profesores de tiempo libre si tiene datos
           ? <><label className="titleTabla">Tiempos Libres</label><UserTable color='red' colorTitle={'red'} data={data2} columns={columns} onDeleteTodo={handleDeleteTodo2} onEditTodo={handleEditTodo2} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
           : ''
       }
       {
-        data3.length > 0 //Mostrar tabla de profesores por honorarios si tiene datos
+        data3.length > 0 // Mostrar tabla de profesores por honorarios si tiene datos
           ? <><label className="titleTabla">Honorarios</label><UserTable color='green' colorTitle={'green'} data={data3} columns={columns} onDeleteTodo={handleDeleteTodo3} onEditTodo={handleEditTodo3} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
           : ''
       }
+      </div>
 
       <CreateExcel excelData={[data, data2, data3]} fileName={'Materias-Asignadas'} />
 

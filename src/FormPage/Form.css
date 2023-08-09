@@ -17,7 +17,6 @@
     border-radius: 10px;
     text-align: center;
     outline: none;
-    border: none;
     cursor: pointer;
     background-color: #fff;
     border: 1px solid #000;
@@ -41,4 +40,15 @@
 }
 .file-title{
     width: 100%;
+}
+input[type="number"]{
+    width: 80%;
+    padding: 1%;
+    font-size: large;
+    border-radius: 10px;
+    margin-bottom: 2vw;
+    border: 1px solid #000;
+    outline: none;
+    background-color: #fff;
+    text-align: center;
 }

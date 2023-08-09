@@ -8,7 +8,7 @@ export const CreateExcel = ({ excelData, fileName }) => {
     //     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
     // const fileExtension = ".xlsx";
 
-    const exportToCSV = (excelData, fileName) => {
+    const exportToXLSX = (excelData, fileName) => {
         let confirmacion = window.confirm("¿Deseas exportar tus datos y salir?");
         if(confirmacion){
             let centerAll = {vertical: "center", horizontal: "center", wrapText: true};
@@ -64,6 +64,6 @@ export const CreateExcel = ({ excelData, fileName }) => {
     };
 
     return (
-        <button className="btn-excel-export" onClick={(e) => exportToCSV(excelData, fileName)}>Export</button>
+        <button className="btn-excel-export" onClick={(e) => exportToXLSX(excelData, fileName)}>Export</button>
     );
 };
