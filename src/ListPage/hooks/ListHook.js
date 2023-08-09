@@ -110,6 +110,10 @@ export const ListHook = (materiasTotales) => {
         const practicas = values.map(value => value.practicas).reduce((prev, curr) => prev + curr, 0);
         const observaciones = values.map(value => value.observaciones).reduce((prev, curr) => prev + curr, 0);
 
+        if ((materiasForm - materias) < 0) {
+            window.alert('El número de materias restantes sobrepasa el número de materias');
+        }
+
         setInfo({ // Enviar estado de la información
             materias: materiasForm,
             mRestantes: materiasForm - materias,
