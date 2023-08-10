@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as XLSX from 'xlsx'
 
-export const ExcelReader = ({ handleValidando }) => {
+export const ExcelReader = ({ handleValidando, estado, changeEstado, changeNotificacion }) => {
   const navigate = useNavigate();
   const [selectedName, setSelectedName] = useState("Sube tu archivo excel");
-  const [materias, setMaterias] = useState(0);
+  const [materias, setMaterias] = useState("");
   const fileInputRef = useRef(null);
 
   const handleUploadName = (event) => {
@@ -17,10 +17,14 @@ export const ExcelReader = ({ handleValidando }) => {
     setMaterias(event.target.value);
   };
 
+  const activarNotificacion = () => {
+    changeNotificacion(true);
+  }
+
   const handleFileChange = (event) => {
+    event.preventDefault();
     const file = fileInputRef.current.files[0];
     if(file !== undefined){
-      event.preventDefault();
       handleValidando(true);
       const reader = new FileReader();
       reader.onload = (event) => {
@@ -59,21 +63,38 @@ export const ExcelReader = ({ handleValidando }) => {
         handleValidando(false);
         navigate("/list", {state: {materias}});
       };
-
       reader.readAsBinaryString(file);
     }else{
-      alert("Debes seleccionar un archivo");
+      activarNotificacion()
+      // localStorage.clear();
+      // handleValidando(false);
+      // navigate("/list", {state: {materias}});
     }
-  };
+  }
+
+  useEffect(() => {
+    function verEstado(){
+        if(estado){
+            changeEstado(false)
+            changeNotificacion(false)
+            localStorage.clear();
+            handleValidando(false);
+            navigate("/list", {state: {materias}});
+        }else{
+            changeNotificacion(false)
+        }
+    }
+    verEstado()
+  }, [estado, navigate])
 
   return (
     <>
       <label className='input-title margen' for="Materias">Cantidad de Materias</label>
-      <input type="number" id='Materias' placeholder='Cantidad de Materias' required value={materias} onChange={handleMateriasChange}></input>
+      <input type="number" id='Materias'  className='input-materias' placeholder='Cantidad de Materias' required value={materias} onChange={handleMateriasChange}></input>
       <label className='input-title margen' for="File">Sube tus Materias</label>
       <div className="file-upload">
         <label className="file-title">{selectedName}</label>
-        <input type="file" required ref={fileInputRef} onChange={handleUploadName} id="File" />
+        <input type="file" ref={fileInputRef} onChange={handleUploadName} id="File"/>
       </div>
       <input type="submit" value="Leer Datos" onClick={handleFileChange}></input>
     </>

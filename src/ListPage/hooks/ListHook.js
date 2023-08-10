@@ -48,6 +48,7 @@ const createHandleToData = (dispatch) => { // Métodos para funciones relacionad
 }
 
 export const ListHook = (materiasTotales) => {
+    const [notificado, setNotificado] = useState(false);
     const materiasForm = materiasTotales;
     
     const [columns, setColumns] = useState(initialStateColumns); // Estado de columnas que se muestran de la tabla
@@ -110,8 +111,11 @@ export const ListHook = (materiasTotales) => {
         const practicas = values.map(value => value.practicas).reduce((prev, curr) => prev + curr, 0);
         const observaciones = values.map(value => value.observaciones).reduce((prev, curr) => prev + curr, 0);
 
-        if ((materiasForm - materias) < 0) {
-            window.alert('El número de materias restantes sobrepasa el número de materias');
+        if ((materiasForm - materias) < 0 && !notificado) {
+            setNotificado(true)
+        }
+        if ((materiasForm - materias) > 0 && notificado) {
+            setNotificado(false)
         }
 
         setInfo({ // Enviar estado de la información
@@ -133,6 +137,7 @@ export const ListHook = (materiasTotales) => {
     }
 
     return {
+        notificado, 
         columns, setColumns,
 
         data, dispatch,

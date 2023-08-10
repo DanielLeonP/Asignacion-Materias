@@ -6,7 +6,7 @@
     margin-top: 2vh;
 }
 .menor{
-    margin: 5vh 10vw 5vh 10vw !important;
+    margin: 11vh 10vw 5vh 10vw !important;
 }
 .file-upload {
     width: 80%;
@@ -41,7 +41,7 @@
 .file-title{
     width: 100%;
 }
-input[type="number"]{
+.input-materias{
     width: 80%;
     padding: 1%;
     font-size: large;
