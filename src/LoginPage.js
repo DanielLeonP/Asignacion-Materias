@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/GlobalStyles.css'
+import { useContext } from 'react';
+import { AuthContext } from './context/AuthContext';
 
 export const LoginPage = () => {
+
+  const { login } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const [validando, setValidando] = useState(false);
   const [clave, setClave] = useState("");
@@ -11,8 +16,15 @@ export const LoginPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault(); // Evita que la página se recargue al enviar el formulario
     setValidando(true);
-    navigate("/form");
+    
+    const lastPath = localStorage.getItem('lastPath') || '/';
+    login('Daniel');
+    navigate(lastPath, { replace: true });
+
     setValidando(false);
+
+    // Redirigir a ruta previa guardada
+
   }
 
   const handleClaveChange = (event) => {

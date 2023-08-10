@@ -24,7 +24,7 @@ export const ExcelReader = ({ handleValidando, estado, changeEstado, changeNotif
   const handleFileChange = (event) => {
     event.preventDefault();
     const file = fileInputRef.current.files[0];
-    if(file !== undefined){
+    if (file !== undefined) {
       handleValidando(true);
       const reader = new FileReader();
       reader.onload = (event) => {
@@ -34,7 +34,7 @@ export const ExcelReader = ({ handleValidando, estado, changeEstado, changeNotif
         const celdas = libro.Sheets[primerHoja];
         const excelData = XLSX.utils.sheet_to_json(celdas, { header: 1 });
 
-        if(excelData[2] === ""){
+        if (excelData[2] === "") {
           excelData.forEach(row => row.shift())
         }
         let dataTC = []; let dataTL = []; let dataH = []; let tipoProfesor = "";
@@ -61,10 +61,10 @@ export const ExcelReader = ({ handleValidando, estado, changeEstado, changeNotif
         localStorage.setItem('dataTL', JSON.stringify(dataTL));
         localStorage.setItem('dataH', JSON.stringify(dataH));
         handleValidando(false);
-        navigate("/list", {state: {materias}});
+        navigate("/list", { state: { materias } });
       };
       reader.readAsBinaryString(file);
-    }else{
+    } else {
       activarNotificacion()
       // localStorage.clear();
       // handleValidando(false);
@@ -73,16 +73,21 @@ export const ExcelReader = ({ handleValidando, estado, changeEstado, changeNotif
   }
 
   useEffect(() => {
-    function verEstado(){
-        if(estado){
-            changeEstado(false)
-            changeNotificacion(false)
-            localStorage.clear();
-            handleValidando(false);
-            navigate("/list", {state: {materias}});
-        }else{
-            changeNotificacion(false)
-        }
+    function verEstado() {
+      if (estado) {
+        changeEstado(false)
+        changeNotificacion(false)
+
+        // localStorage.clear();
+        localStorage.removeItem('dataTC')
+        localStorage.removeItem('dataTL')
+        localStorage.removeItem('dataH')
+
+        handleValidando(false);
+        navigate("/list", { state: { materias } });
+      } else {
+        changeNotificacion(false)
+      }
     }
     verEstado()
   }, [estado, navigate])
@@ -90,11 +95,11 @@ export const ExcelReader = ({ handleValidando, estado, changeEstado, changeNotif
   return (
     <>
       <label className='input-title margen' for="Materias">Cantidad de Materias</label>
-      <input type="number" id='Materias'  className='input-materias' placeholder='Cantidad de Materias' required value={materias} onChange={handleMateriasChange}></input>
+      <input type="number" id='Materias' className='input-materias' placeholder='Cantidad de Materias' required value={materias} onChange={handleMateriasChange}></input>
       <label className='input-title margen' for="File">Sube tus Materias</label>
       <div className="file-upload">
         <label className="file-title">{selectedName}</label>
-        <input type="file" ref={fileInputRef} onChange={handleUploadName} id="File"/>
+        <input type="file" ref={fileInputRef} onChange={handleUploadName} id="File" />
       </div>
       <input type="submit" value="Leer Datos" onClick={handleFileChange}></input>
     </>

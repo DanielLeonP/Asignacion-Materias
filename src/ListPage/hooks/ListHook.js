@@ -1,5 +1,6 @@
 import { useReducer, useState, useEffect } from 'react'
 import { todoReducer } from '../helpers/todoReducer';
+import { useLocation } from 'react-router-dom'
 
 const init = (dataName = 'dataTC') => { // Función para inicializar los datos de las tablas desde localStorage
     return JSON.parse(localStorage.getItem(dataName)) || [];
@@ -47,10 +48,22 @@ const createHandleToData = (dispatch) => { // Métodos para funciones relacionad
     return [handleDeleteTodo, handleAddTodo, handleEditTodo]
 }
 
-export const ListHook = (materiasTotales) => {
+export const ListHook = () => {
     const [notificado, setNotificado] = useState(false);
-    const materiasForm = materiasTotales;
-    
+
+    const [notificacion, setNotificacion] = useState(false);
+    const [estado, setEstado] = useState(false);
+    const location = useLocation();
+    const materiasForm = location.state?.materias || 0;
+
+    const handleNotificacionChange = (activacion) => {
+        setNotificacion(activacion)
+    }
+
+    const handleEstadoChange = (state) => {
+        setEstado(state)
+    }
+
     const [columns, setColumns] = useState(initialStateColumns); // Estado de columnas que se muestran de la tabla
     const [columnsBefore, setColumnsBefore] = useState(columns); // Estado anterior al actual de las columnas en las tablas
 
@@ -136,8 +149,9 @@ export const ListHook = (materiasTotales) => {
         setColumns(columnsBefore)
     }
 
+
     return {
-        notificado, 
+        notificado,
         columns, setColumns,
 
         data, dispatch,
@@ -150,6 +164,12 @@ export const ListHook = (materiasTotales) => {
 
         columnsInitialState,
         columnsBeforeToEdit,
-        info
+        info,
+
+        notificacion, setNotificacion,
+        estado, setEstado,
+        location,
+        handleNotificacionChange, handleEstadoChange
+
     }
 }

@@ -119,12 +119,14 @@ body::-webkit-scrollbar-thumb {
     padding: 0.5vh 0;
     box-sizing: border-box;
 }
+
 .AddRowLabel {
     cursor: pointer;
     width: 90%;
     text-align: center;
     padding: 0 0 0 2vh;
 }
+
 .browseIcon {
     width: 2vh;
     position: relative;
@@ -142,6 +144,7 @@ body::-webkit-scrollbar-thumb {
     border: 1px solid #000;
     text-align: center;
 }
+
 .fieldProfessor {
     width: 90%;
     margin-top: 2vh;
@@ -150,6 +153,7 @@ body::-webkit-scrollbar-thumb {
     justify-content: right;
     align-items: center;
 }
+
 .submit {
     border-radius: 50px;
     background: #32409E;
@@ -158,8 +162,14 @@ body::-webkit-scrollbar-thumb {
     color: white;
     cursor: pointer;
 }
-.submit:hover{ background-color: #1F2E86; }
-.submit:active{ background-color: #1B1E62; }
+
+.submit:hover {
+    background-color: #1F2E86;
+}
+
+.submit:active {
+    background-color: #1B1E62;
+}
 
 .fieldsColumn {
     width: 70%;
@@ -178,25 +188,32 @@ body::-webkit-scrollbar-thumb {
     margin: 1vh 0vh 2vh 0vh;
     padding: 4px;
 }
-th{
+
+th {
     font-size: small;
     padding: 0.3vh 1vh;
 }
+
 .red {
     background-color: rgba(255, 118, 117, 0.2);
 }
+
 .red:nth-child(even) {
     background-color: whitesmoke;
 }
+
 .green {
     background-color: rgba(85, 239, 196, 0.2);
 }
+
 .green:nth-child(even) {
     background-color: whitesmoke;
 }
+
 .blue {
     background-color: rgba(116, 185, 255, 0.2);
 }
+
 .blue:nth-child(even) {
     background-color: whitesmoke;
 }
@@ -205,10 +222,12 @@ th{
     border: 3px solid #ABABAB;
     background-color: #D4D1EA;
 }
+
 .headerTable {
     background-color: #32409E;
     color: white;
 }
+
 .editRow {
     border: 1px solid #ccc;
     font-family: inherit;
@@ -248,28 +267,37 @@ th{
     border: none;
     cursor: pointer;
 }
-.btn-excel-export:hover{ background-color: #1F2E86; }
-.btn-excel-export:active{ background-color: #1B1E62; }
+
+.btn-excel-export:hover {
+    background-color: #1F2E86;
+}
+
+.btn-excel-export:active {
+    background-color: #1B1E62;
+}
 
 /* ------------------------------------------------------- */
-input[type="checkbox"]{
+input[type="checkbox"] {
     margin: 0 1vh 0 0;
     width: 2.5vh;
     height: 2.5vh;
     accent-color: #1e3799;
 }
-input[type="radio"]{
+
+input[type="radio"] {
     margin: 0 0 0 2vh;
     width: 3vh;
     height: 3vh;
     accent-color: #1e3799;
 }
-.fieldColumn{
+
+.fieldColumn {
     display: flex;
     justify-content: left;
     align-items: center;
 }
-.RadioGroup{
+
+.RadioGroup {
     width: 90%;
     display: grid;
     place-items: center;
@@ -278,17 +306,21 @@ input[type="radio"]{
     padding: 0 0 0 10vh;
     grid-gap: 1vh 4vh;
 }
-.professorLabel{
+
+.professorLabel {
     width: 22vh;
     text-align: right;
 }
-.titleTabla{
+
+.titleTabla {
     margin: 2vh 0 0 0;
 }
-.fieldLabel{
+
+.fieldLabel {
     width: 10vw;
 }
-.tablas{
+
+.tablas {
     width: 100%;
     text-align: center;
     display: grid;
@@ -296,7 +328,7 @@ input[type="radio"]{
 }
 
 /* ------------------------------------------------------- */
-.floatingDiv{
+.floatingDiv {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -311,20 +343,27 @@ input[type="radio"]{
     justify-content: center;
     align-items: center;
 }
-.notification{
+
+.notification {
     background-color: #fff;
     border-radius: 20px;
     width: 50vw;
     padding: 3% 3%;
     display: grid;
 }
-.notificationTitle{ text-align: center; }
-.notificationText{
+
+.notificationTitle {
+    text-align: center;
+}
+
+.notificationText {
     margin: 2.5vh 0 2.5vh 0;
     color: grey;
     font-weight: 300;
+    text-align: center;
 }
-.notificacionBtn{
+
+.notificacionBtn {
     outline: none;
     border: none;
     padding: 1vh;
@@ -333,14 +372,33 @@ input[type="radio"]{
     cursor: pointer;
     border-radius: 50px;
 }
-.notificacionBotones{
+
+.notificacionBotones {
     width: 100%;
     display: flex;
     justify-content: space-around;
 }
-.btnAceptar{ background-color: #32409E; }
-.btnAceptar:hover{ background-color: #1F2E86; }
-.btnAceptar:active{ background-color: #1B1E62; }
-.btnCancelar{ background-color: #c0392b; }
-.btnCancelar:hover{ background-color: #952222; }
-.btnCancelar:active{ background-color: #742016; }
+
+.btnAceptar {
+    background-color: #32409E;
+}
+
+.btnAceptar:hover {
+    background-color: #1F2E86;
+}
+
+.btnAceptar:active {
+    background-color: #1B1E62;
+}
+
+.btnCancelar {
+    background-color: #c0392b;
+}
+
+.btnCancelar:hover {
+    background-color: #952222;
+}
+
+.btnCancelar:active {
+    background-color: #742016;
+}

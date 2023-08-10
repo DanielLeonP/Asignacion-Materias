@@ -1,5 +1,4 @@
-import { useLocation } from 'react-router-dom'
-import { useState } from 'react'
+
 
 // Styles
 import './List.css'
@@ -16,22 +15,16 @@ import { FloatingNotification } from '../FormPage/components/FloatingNotificatio
 import { ListHook } from './hooks/ListHook';
 
 export const ListPage = () => {
-  const [notificacion, setNotificacion] = useState(false);
-  const [estado, setEstado] = useState(false);
-  const location = useLocation();
-  const materiasTotales = location.state?.materias || 0;
 
-  const { notificado, columns, setColumns, data, data2, data3, handleAddTodo, handleDeleteTodo, handleEditTodo, handleDeleteTodo2, handleAddTodo2, handleEditTodo2, handleDeleteTodo3, handleAddTodo3, handleEditTodo3, columnsInitialState, columnsBeforeToEdit, info } = ListHook(materiasTotales);
 
-  const handleNotificacionChange = (activacion) => {
-    setNotificacion(activacion)
-  }
+  const { notificado, columns, setColumns, data, data2, data3, handleAddTodo,
+    handleDeleteTodo, handleEditTodo, handleDeleteTodo2, handleAddTodo2, handleEditTodo2, handleDeleteTodo3,
+    handleAddTodo3, handleEditTodo3, columnsInitialState, columnsBeforeToEdit, info,
+    notificacion, estado,
+    handleNotificacionChange, handleEstadoChange } = ListHook();
 
-  const handleEstadoChange = (state) => {
-    setEstado(state)
-  }
 
-  
+
 
   return (
     <>
@@ -55,21 +48,21 @@ export const ListPage = () => {
         <Columns columns={columns} setColumns={setColumns} />
 
         <div className="tablas">
-        {
-          data.length > 0 // Mostrar tabla de profesores de tiempo completo si tiene datos
-            ? <><label className="titleTabla">Tiempos Completos</label><UserTable color='blue' colorTitle={'blue'} data={data} columns={columns} onDeleteTodo={handleDeleteTodo} onEditTodo={handleEditTodo} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
-            : ''
-        }
-        {
-          data2.length > 0 // Mostrar tabla de profesores de tiempo libre si tiene datos
-            ? <><label className="titleTabla">Tiempos Libres</label><UserTable color='red' colorTitle={'red'} data={data2} columns={columns} onDeleteTodo={handleDeleteTodo2} onEditTodo={handleEditTodo2} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
-            : ''
-        }
-        {
-          data3.length > 0 // Mostrar tabla de profesores por honorarios si tiene datos
-            ? <><label className="titleTabla">Honorarios</label><UserTable color='green' colorTitle={'green'} data={data3} columns={columns} onDeleteTodo={handleDeleteTodo3} onEditTodo={handleEditTodo3} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
-            : ''
-        }
+          {
+            data.length > 0 // Mostrar tabla de profesores de tiempo completo si tiene datos
+              ? <><label className="titleTabla">Tiempos Completos</label><UserTable color='blue' colorTitle={'blue'} data={data} columns={columns} onDeleteTodo={handleDeleteTodo} onEditTodo={handleEditTodo} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
+              : ''
+          }
+          {
+            data2.length > 0 // Mostrar tabla de profesores de tiempo libre si tiene datos
+              ? <><label className="titleTabla">Tiempos Libres</label><UserTable color='red' colorTitle={'red'} data={data2} columns={columns} onDeleteTodo={handleDeleteTodo2} onEditTodo={handleEditTodo2} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
+              : ''
+          }
+          {
+            data3.length > 0 // Mostrar tabla de profesores por honorarios si tiene datos
+              ? <><label className="titleTabla">Honorarios</label><UserTable color='green' colorTitle={'green'} data={data3} columns={columns} onDeleteTodo={handleDeleteTodo3} onEditTodo={handleEditTodo3} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
+              : ''
+          }
         </div>
 
         <CreateExcel excelData={[data, data2, data3]} fileName={'Materias-Asignadas'} estado={estado} changeEstado={handleEstadoChange} changeNotificacion={handleNotificacionChange} />
