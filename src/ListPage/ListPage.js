@@ -13,6 +13,7 @@ import { FloatingNotification } from '../FormPage/components/FloatingNotificatio
 
 // hooks
 import { ListHook } from './hooks/ListHook';
+import { LogoutButton } from '../components/LogoutButton';
 
 export const ListPage = () => {
 
@@ -28,6 +29,8 @@ export const ListPage = () => {
 
   return (
     <>
+      <LogoutButton />
+      
       <FloatingNotification customTitle="Exportar y Salir" customText="¿Deseas exportar tus datos y salir?" customButtons={true} notificacion={notificacion} changeNotificacion={handleNotificacionChange} changeEstado={handleEstadoChange} />
 
       <FloatingNotification customTitle="Materias no Coincidentes" customText="El número de materias restantes sobrepasa el número de materias" customButtons={false} notificacion={notificado} changeNotificacion={handleNotificacionChange} />

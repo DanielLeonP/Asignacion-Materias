@@ -1,4 +1,16 @@
 import React, { useState } from 'react'
+
+const allColumnsFalse = (obj) => {
+    for (const key in obj) {
+        if (obj.hasOwnProperty(key) && obj[key]) {
+            // console.log('tiene un verdadero')
+            return false; // Si se encuentra una propiedad con valor verdadero, retorna falso
+        }
+    }
+    // console.log('todo es falso')
+    return true; // Si no se encuentra ninguna propiedad con valor verdadero, retorna verdadero
+}
+
 export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTodo, columnsInitialState, columnsBeforeToEdit }) => {
     const [editable, seteditable] = useState(true);
 
@@ -45,6 +57,7 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
         seteditable(!editable);
         columnsBeforeToEdit();
     }
+
     if (!editable) {
         return (
             <tr>
@@ -59,6 +72,7 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
                 {columns.faltantes ? <th className='editRowTable'><input type='number' name={'faltantes'} className='editRow' onChange={onInputChange} defaultValue={userData.faltantes} ></input></th> : ''}
                 {columns.practicas ? <th className='editRowTable'><input type='number' name={'practicas'} className='editRow' onChange={onInputChange} defaultValue={userData.practicas} ></input></th> : ''}
                 {columns.observaciones ? <th className='editRowTable'><input name={'observaciones'} className='editRow' onChange={onInputChange} defaultValue={userData.observaciones} ></input></th> : ''}
+
                 <th className='editRowTable'>
                     <a className='selectIcon'
                         onClick={listoButton}
@@ -88,21 +102,25 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
             {columns.faltantes ? <th>{userData.faltantes !== 0 ? userData.faltantes : ''}</th> : ''}
             {columns.practicas ? <th>{userData.practicas !== 0 ? userData.practicas : ''}</th> : ''}
             {columns.observaciones ? <th>{userData.observaciones !== 0 ? userData.observaciones : ''}</th> : ''}
-            < th className='noBackgroundColor' >
-                <a className='selectIcon'
-                    onClick={() => {
-                        seteditable(!editable);
-                        columnsInitialState(); // Poner todas las columnas visibles para poder editar
-                    }}
-                >
-                    <img src='../images/icons/editar.png' className='icon' />
-                </a>
-                <a className='selectIcon'
-                    onClick={() => onDeleteTodo(userData.clave)}
-                >
-                    <img src='../images/icons/borrar.png' className='icon' />
-                </a>
-            </th >
+
+            {allColumnsFalse(columns)
+                ? ''
+                : < th className='noBackgroundColor' >
+                    <a className='selectIcon'
+                        onClick={() => {
+                            seteditable(!editable);
+                            columnsInitialState(); // Poner todas las columnas visibles para poder editar
+                        }}
+                    >
+                        <img src='../images/icons/editar.png' className='icon' />
+                    </a>
+                    <a className='selectIcon'
+                        onClick={() => onDeleteTodo(userData.clave)}
+                    >
+                        <img src='../images/icons/borrar.png' className='icon' />
+                    </a>
+                </th >
+            }
         </tr >
 
     )

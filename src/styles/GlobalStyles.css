@@ -316,3 +316,38 @@ input[type='submit']:active {
         opacity: 0.8;
     }
 }
+
+.logoutDiv {
+    position: fixed;
+    background-color: #54545836;
+    border-radius: 15px;
+    /* border: 1px solid #000; */
+    top: 20px;
+    right: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: right;
+    align-items: first baseline;
+    z-index: 20;
+    width: fit-content;
+    height: fit-content;
+}
+
+.logout {
+    border: 3px solid #1B1E62;
+    border-radius: 15px;
+    padding: 7px;
+    font-size: medium;
+}
+
+.logout:hover {
+    cursor: pointer;
+    background-color: #1B1E62;
+    color: white
+}
+
+.welcome {
+    color: white;
+    margin-right: 7px;
+    padding: 5px 5px;
+}

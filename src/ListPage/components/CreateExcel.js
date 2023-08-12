@@ -56,10 +56,11 @@ export const CreateExcel = ({ excelData, fileName, estado, changeEstado, changeN
         XLSX.writeFile(wb, fileName + ".xlsx");
 
         // localStorage.clear();
-        localStorage.removeItem('dataTC')
-        localStorage.removeItem('dataTL')
-        localStorage.removeItem('dataH')
-        localStorage.removeItem('lastPath')
+        localStorage.removeItem('dataTC');
+        localStorage.removeItem('dataTL');
+        localStorage.removeItem('dataH');
+        localStorage.removeItem('lastPath');
+        localStorage.removeItem('materias');
 
         navigate("/form");
 

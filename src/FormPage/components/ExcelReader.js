@@ -56,15 +56,16 @@ export const ExcelReader = ({ handleValidando, estado, changeEstado, changeNotif
             }
           }
         }
-
+        localStorage.setItem('materias', JSON.stringify(materias));
         localStorage.setItem('dataTC', JSON.stringify(dataTC));
         localStorage.setItem('dataTL', JSON.stringify(dataTL));
         localStorage.setItem('dataH', JSON.stringify(dataH));
         handleValidando(false);
-        navigate("/list", { state: { materias } });
+        navigate("/list");
       };
       reader.readAsBinaryString(file);
     } else {
+      localStorage.setItem('materias', JSON.stringify(materias));
       activarNotificacion()
       // localStorage.clear();
       // handleValidando(false);
@@ -84,7 +85,7 @@ export const ExcelReader = ({ handleValidando, estado, changeEstado, changeNotif
         localStorage.removeItem('dataH')
 
         handleValidando(false);
-        navigate("/list", { state: { materias } });
+        navigate("/list");
       } else {
         changeNotificacion(false)
       }

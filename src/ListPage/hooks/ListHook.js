@@ -54,7 +54,7 @@ export const ListHook = () => {
     const [notificacion, setNotificacion] = useState(false);
     const [estado, setEstado] = useState(false);
     const location = useLocation();
-    const materiasForm = location.state?.materias || 0;
+    const materiasForm = JSON.parse(localStorage.getItem('materias')) || 0;
 
     const handleNotificacionChange = (activacion) => {
         setNotificacion(activacion)
