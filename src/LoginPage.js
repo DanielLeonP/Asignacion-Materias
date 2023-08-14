@@ -47,8 +47,8 @@ export const LoginPage = () => {
       </div>
       <form className="container" onSubmit={handleSubmit}>
         <h1 className='title'>¡Bienvenido!</h1>
-        <label className='input-title' for="clave">Clave</label>
-        <input className='input-login' type='text' placeholder='Clave' required value={clave} onChange={handleClaveChange} id="clave"></input>
+        <label className='input-title' for="clave">Usuario</label>
+        <input className='input-login' type='text' placeholder='Usuario' required value={clave} onChange={handleClaveChange} id="clave"></input>
         <label className='input-title' for="password">Contraseña</label>
         <input className='input-login' type='password' placeholder='Contraseña' required value={contrasena} onChange={handleContrasenaChange} id="password"></input>
         <input type="submit" value="Ingresar"></input>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const allColumnsFalse = (obj) => {
     for (const key in obj) {
@@ -11,7 +11,7 @@ const allColumnsFalse = (obj) => {
     return true; // Si no se encuentra ninguna propiedad con valor verdadero, retorna verdadero
 }
 
-export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTodo, columnsInitialState, columnsBeforeToEdit }) => {
+export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTodo, columnsInitialState, columnsBeforeToEdit, changeNotificacion, changeEstado, estado }) => {
     const [editable, seteditable] = useState(true);
 
     const [userData, setUserData] = useState({
@@ -27,6 +27,7 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
         observaciones: user[9]
     });
 
+    const [userDelete, setUserDelete] = useState(0);
     const [userDataEdit, setUserDataEdit] = useState(userData);
 
     const onInputChange = ({ target }) => {
@@ -36,6 +37,7 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
             [name]: value
         })
     }
+
     const listoButton = () => {
         onEditTodo(counter, [
             userDataEdit.grado,
@@ -53,10 +55,30 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
         seteditable(!editable);
         columnsBeforeToEdit();
     }
+
     const editCancel = () => {
         seteditable(!editable);
         columnsBeforeToEdit();
     }
+
+    const activarNotificacion = (clave) => {
+        changeNotificacion(true);
+        setUserDelete(clave)
+    }
+
+    useEffect(() => {
+        function verEstado() {
+            if (estado) {
+                changeEstado(false)
+                changeNotificacion(false)
+                onDeleteTodo(userDelete)
+                setUserDelete(0)
+            } else {
+                changeNotificacion(false)
+            }
+        }
+        verEstado()
+    }, [estado])
 
     if (!editable) {
         return (
@@ -115,7 +137,7 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
                         <img src='../images/icons/editar.png' className='icon' />
                     </a>
                     <a className='selectIcon'
-                        onClick={() => onDeleteTodo(userData.clave)}
+                        onClick={() => activarNotificacion(userData.clave)}
                     >
                         <img src='../images/icons/borrar.png' className='icon' />
                     </a>

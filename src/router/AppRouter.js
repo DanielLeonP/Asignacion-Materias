@@ -8,6 +8,8 @@ import { LoginPage } from '../LoginPage'
 import { FormPage } from '../FormPage/FormPage'
 import { ListPage } from '../ListPage/ListPage'
 
+import { Register } from '../Register.js'
+
 export const AppRouter = () => {
     return (
         <>

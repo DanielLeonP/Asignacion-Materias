@@ -1,8 +1,8 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { ListPage } from './ListPage/ListPage'
-import { FormPage } from './FormPage/FormPage'
-import { LoginPage } from './LoginPage'
+import { ListPage } from './ListPage/ListPage.js'
+import { FormPage } from './FormPage/FormPage.js'
+import { LoginPage } from './LoginPage.js'
 
 export const MainApp = () => {
     return (

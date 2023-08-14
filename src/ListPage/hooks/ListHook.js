@@ -53,7 +53,9 @@ export const ListHook = () => {
 
     const [notificacion, setNotificacion] = useState(false);
     const [estado, setEstado] = useState(false);
-    const location = useLocation();
+    const [notificacion2, setNotificacion2] = useState(false);
+    const [estado2, setEstado2] = useState(false);
+    // const location = useLocation();
     const materiasForm = JSON.parse(localStorage.getItem('materias')) || 0;
 
     const handleNotificacionChange = (activacion) => {
@@ -62,6 +64,14 @@ export const ListHook = () => {
 
     const handleEstadoChange = (state) => {
         setEstado(state)
+    }
+
+    const handleNotificacionChange2 = (activacion) => {
+        setNotificacion2(activacion)
+    }
+
+    const handleEstadoChange2 = (state) => {
+        setEstado2(state)
     }
 
     const [columns, setColumns] = useState(initialStateColumns); // Estado de columnas que se muestran de la tabla
@@ -162,14 +172,14 @@ export const ListHook = () => {
         handleDeleteTodo2, handleAddTodo2, handleEditTodo2,
         handleDeleteTodo3, handleAddTodo3, handleEditTodo3,
 
-        columnsInitialState,
-        columnsBeforeToEdit,
-        info,
+        columnsInitialState, columnsBeforeToEdit, info,
 
-        notificacion, setNotificacion,
         estado, setEstado,
-        location,
-        handleNotificacionChange, handleEstadoChange
+        notificacion, setNotificacion,
+        handleNotificacionChange, handleEstadoChange,
 
+        estado2, setEstado2,
+        notificacion2, setNotificacion2,
+        handleNotificacionChange2, handleEstadoChange2
     }
 }

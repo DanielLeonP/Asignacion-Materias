@@ -17,20 +17,35 @@ import { LogoutButton } from '../components/LogoutButton';
 
 export const ListPage = () => {
 
+  const { 
+    notificado, 
+    columns, setColumns,
 
-  const { notificado, columns, setColumns, data, data2, data3, handleAddTodo,
-    handleDeleteTodo, handleEditTodo, handleDeleteTodo2, handleAddTodo2, handleEditTodo2, handleDeleteTodo3,
-    handleAddTodo3, handleEditTodo3, columnsInitialState, columnsBeforeToEdit, info,
-    notificacion, estado,
-    handleNotificacionChange, handleEstadoChange } = ListHook();
+    data,
+    data2,
+    data3, 
+    
+    handleDeleteTodo, handleAddTodo, handleEditTodo,
+    handleDeleteTodo2, handleAddTodo2, handleEditTodo2,
+    handleDeleteTodo3, handleAddTodo3, handleEditTodo3,
 
+    columnsInitialState, columnsBeforeToEdit, info,
 
+    estado,
+    notificacion,
+    handleNotificacionChange, handleEstadoChange,
 
+    estado2,
+    notificacion2,
+    handleNotificacionChange2, handleEstadoChange2
+  } = ListHook();
 
   return (
     <>
       <LogoutButton />
       
+      <FloatingNotification customTitle="Eliminar Maestro" customText="¿Deseas eliminar a este maestro y todos sus datos de la tabla?" customButtons={true} notificacion={notificacion2} changeNotificacion={handleNotificacionChange2} changeEstado={handleEstadoChange2} />
+
       <FloatingNotification customTitle="Exportar y Salir" customText="¿Deseas exportar tus datos y salir?" customButtons={true} notificacion={notificacion} changeNotificacion={handleNotificacionChange} changeEstado={handleEstadoChange} />
 
       <FloatingNotification customTitle="Materias no Coincidentes" customText="El número de materias restantes sobrepasa el número de materias" customButtons={false} notificacion={notificado} changeNotificacion={handleNotificacionChange} />
@@ -53,17 +68,17 @@ export const ListPage = () => {
         <div className="tablas">
           {
             data.length > 0 // Mostrar tabla de profesores de tiempo completo si tiene datos
-              ? <><label className="titleTabla">Tiempos Completos</label><UserTable color='blue' colorTitle={'blue'} data={data} columns={columns} onDeleteTodo={handleDeleteTodo} onEditTodo={handleEditTodo} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
+              ? <><label className="titleTabla">Tiempos Completos</label><UserTable color='blue' colorTitle={'blue'} data={data} columns={columns} onDeleteTodo={handleDeleteTodo} onEditTodo={handleEditTodo} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} changeNotificacion={handleNotificacionChange2} changeEstado={handleEstadoChange2} estado={estado2} /></>
               : ''
           }
           {
             data2.length > 0 // Mostrar tabla de profesores de tiempo libre si tiene datos
-              ? <><label className="titleTabla">Tiempos Libres</label><UserTable color='red' colorTitle={'red'} data={data2} columns={columns} onDeleteTodo={handleDeleteTodo2} onEditTodo={handleEditTodo2} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
+              ? <><label className="titleTabla">Tiempos Libres</label><UserTable color='red' colorTitle={'red'} data={data2} columns={columns} onDeleteTodo={handleDeleteTodo2} onEditTodo={handleEditTodo2} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} changeNotificacion={handleNotificacionChange2} changeEstado={handleEstadoChange2} estado={estado2} /></>
               : ''
           }
           {
             data3.length > 0 // Mostrar tabla de profesores por honorarios si tiene datos
-              ? <><label className="titleTabla">Honorarios</label><UserTable color='green' colorTitle={'green'} data={data3} columns={columns} onDeleteTodo={handleDeleteTodo3} onEditTodo={handleEditTodo3} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} /></>
+              ? <><label className="titleTabla">Honorarios</label><UserTable color='green' colorTitle={'green'} data={data3} columns={columns} onDeleteTodo={handleDeleteTodo3} onEditTodo={handleEditTodo3} columnsInitialState={columnsInitialState} columnsBeforeToEdit={columnsBeforeToEdit} changeNotificacion={handleNotificacionChange2} changeEstado={handleEstadoChange2} estado={estado2} /></>
               : ''
           }
         </div>
