@@ -12,12 +12,16 @@ export const LogoutButton = () => {
     logout();
     navigate('/login', { replace: true });
   }
+  const adminUsers = () => {
+    navigate('/users', { replace: true });
+  }
 
   return (
-    <div className='logoutDiv'>
+    <div className='optionsDiv'>
       <div className='welcome'>
         Bienvenido {user.name}
       </div>
+      <button className='adminUsers' onClick={adminUsers}>Administrar usuarios</button>
       <button className='logout' onClick={onLogout}>Cerrar sesión</button>
     </div>
   )

@@ -64,13 +64,22 @@ const getAllUsers = async () => {
     });
 };
 
+const findUser = (array, username, password) => {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].password === password && array[i].username === username) {
+            return array[i]; // Se encontró el dato
+        }
+    }
+    return null; // No se encontró el dato
+}
+
 const getUsersByName = async (name) => {
     const db = await openDB();
     const transaccion = db.transaction(OBJETO_DB, "readonly");
     const store = transaccion.objectStore(OBJETO_DB);
     const cursor = store.openCursor();
     const usuarioBuscado = [];
-  
+
     cursor.onsuccess = (event) => {
         const cursor = event.target.result;
         if (cursor) {
@@ -80,7 +89,7 @@ const getUsersByName = async (name) => {
             cursor.continue();
         }
     };
-  
+
     return new Promise((resolve) => {
         transaccion.oncomplete = () => {
             resolve(usuarioBuscado);
@@ -115,7 +124,7 @@ const deleteUser = async (userId) => {
     const db = await openDB();
     const transaccion = db.transaction(OBJETO_DB, "readwrite");
     const store = transaccion.objectStore(OBJETO_DB);
-    if(userId !== 1){
+    if (userId !== 1) {
         store.delete(userId);
     }
 
@@ -124,4 +133,4 @@ const deleteUser = async (userId) => {
     };
 };
 
-export { getAllUsers, getUsersByName, addUser, updateUser, deleteUser };
+export { getAllUsers, getUsersByName, addUser, updateUser, deleteUser, findUser };

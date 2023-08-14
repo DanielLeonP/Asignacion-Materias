@@ -3,9 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import './styles/GlobalStyles.css'
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
+import { findUser, getAllUsers } from './database/UserDB';
+import { useEffect } from 'react';
 
 export const LoginPage = () => {
 
+  const [usuarios, setUsuarios] = useState([]);
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const users = await getAllUsers();
+      setUsuarios(users);
+    };
+    fetchUsers();
+  }, []);
+  // console.log(usuarios)
   const { login } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -14,16 +25,20 @@ export const LoginPage = () => {
   const [contrasena, setContrasena] = useState("");
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Evita que la página se recargue al enviar el formulario
-    setValidando(true);
-    
-    const lastPath = localStorage.getItem('lastPath') || '/';
-    login('Daniel');
-    navigate(lastPath, { replace: true });
+    const user = findUser(usuarios, clave, contrasena)
+    // console.log(user)
+    if (user !== null) {
+      event.preventDefault(); // Evita que la página se recargue al enviar el formulario
+      setValidando(true);
 
-    setValidando(false);
+      const lastPath = localStorage.getItem('lastPath') || '/';
+      login(user.username);
+      navigate(lastPath, { replace: true });
 
-    // Redirigir a ruta previa guardada
+      setValidando(false);
+      return;
+    }
+    window.alert('Contraseña o username Incorrecta')
 
   }
 

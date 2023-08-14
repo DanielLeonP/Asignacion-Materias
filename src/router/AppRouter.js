@@ -9,6 +9,7 @@ import { FormPage } from '../FormPage/FormPage'
 import { ListPage } from '../ListPage/ListPage'
 
 import { Register } from '../Register.js'
+import { UsersPage } from '../Users/UsersPage'
 
 export const AppRouter = () => {
     return (
@@ -27,7 +28,12 @@ export const AppRouter = () => {
                             <Routes>
                                 <Route path="/form" element={<FormPage />} />
                                 <Route path="/list" element={<ListPage />} />
+                                {/* <Route path="/Register" element={<Register />} /> */}
+
+                                <Route path="/users" element={<UsersPage />} />
+
                                 <Route path='/' element={<Navigate to='/form' />} />
+
                             </Routes>
                         </PrivateRoute>
                     }

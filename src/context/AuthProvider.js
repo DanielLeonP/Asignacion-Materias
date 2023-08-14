@@ -15,11 +15,10 @@ export const AuthProvider = ({ children }) => {
 
     const [authState, dispatch] = useReducer(authReducer, initialState, init);
     const login = (name = '') => {
-        const user = { id: 'ABC', name }
+        const user = { name }
         const action = {
             type: types.login,
             payload: {
-                id: 'ABC',
                 name: name
             }
         }
