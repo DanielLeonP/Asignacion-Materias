@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import './Form.css'
 
 // Components
-import { ExcelReader } from './components/ExcelReader'
-import { FloatingNotification } from './components/FloatingNotification'
-import { LogoutButton } from '../components/LogoutButton'
+import { ExcelReader } from './components/ExcelReader.js'
+import { FloatingNotification } from '../components/FloatingNotification.js'
+import { LogoutButton } from '../components/LogoutButton.js'
 
 export const FormPage = () => {
   const [notificacion, setNotificacion] = useState(false);

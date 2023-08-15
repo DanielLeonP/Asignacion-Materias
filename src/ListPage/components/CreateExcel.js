@@ -5,9 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 export const CreateExcel = ({ excelData, fileName, estado, changeEstado, changeNotificacion }) => {
     const navigate = useNavigate();
-    // const fileType =
-    //     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
-    // const fileExtension = ".xlsx";
 
     const activarNotificacion = () => {
         changeNotificacion(true);
@@ -63,13 +60,6 @@ export const CreateExcel = ({ excelData, fileName, estado, changeEstado, changeN
         localStorage.removeItem('materias');
 
         navigate("/form");
-
-        // const newData = excelData[0].concat(excelData[1], excelData[2]);
-        // const ws = XLSX.utils.json_to_sheet(newData);
-        // const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
-        // const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
-        // const data = new Blob([excelBuffer], { type: fileType });
-        // FileSaver.saveAs(data, fileName + fileExtension);
     }, [navigate]);
 
     useEffect(() => {

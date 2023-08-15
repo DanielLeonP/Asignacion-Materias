@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './styles/GlobalStyles.css'
-import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
 import { findUser, getAllUsers } from './database/UserDB';
-import { useEffect } from 'react';
+import { FloatingNotification } from './components/FloatingNotification';
+import './styles/GlobalStyles.css'
 
 export const LoginPage = () => {
+  const [notificacion, setNotificacion] = useState(false);
+  // const [estado, setEstado] = useState(false);
 
   const [usuarios, setUsuarios] = useState([]);
   useEffect(() => {
@@ -16,7 +17,7 @@ export const LoginPage = () => {
     };
     fetchUsers();
   }, []);
-  // console.log(usuarios)
+
   const { login } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -25,10 +26,9 @@ export const LoginPage = () => {
   const [contrasena, setContrasena] = useState("");
 
   const handleSubmit = (event) => {
+    event.preventDefault(); // Evita que la página se recargue al enviar el formulario
     const user = findUser(usuarios, clave, contrasena)
-    // console.log(user)
     if (user !== null) {
-      event.preventDefault(); // Evita que la página se recargue al enviar el formulario
       setValidando(true);
 
       const lastPath = localStorage.getItem('lastPath') || '/';
@@ -38,8 +38,7 @@ export const LoginPage = () => {
       setValidando(false);
       return;
     }
-    window.alert('Contraseña o username Incorrecta')
-
+    setNotificacion(true);
   }
 
   const handleClaveChange = (event) => {
@@ -50,24 +49,32 @@ export const LoginPage = () => {
     setContrasena(event.target.value);
   };
 
+  const handleNotificacionChange = (activacion) => {
+    setNotificacion(activacion)
+  };
+
   return (
-    <div>
-      <div className='carga' style={validando ? { display: "grid" } : { display: "none" }}>
-        <div className="three-body">
-          <div className="three-body__dot"></div>
-          <div className="three-body__dot"></div>
-          <div className="three-body__dot"></div>
+    <>
+      <FloatingNotification customTitle="Datos de Acceso Invalidos" customText="La contraseña, el usuario o el correo son incorrectos, ingresa nuevamente" customButtons={false} notificacion={notificacion} changeNotificacion={handleNotificacionChange} />
+
+      <div>
+        <div className='carga' style={validando ? { display: "grid" } : { display: "none" }}>
+          <div className="three-body">
+            <div className="three-body__dot"></div>
+            <div className="three-body__dot"></div>
+            <div className="three-body__dot"></div>
+          </div>
+          <label className="carga-texto">Ingresando...</label>
         </div>
-        <label className="carga-texto">Ingresando...</label>
+        <form className="container" onSubmit={handleSubmit}>
+          <h1 className='title'>¡Bienvenido!</h1>
+          <label className='input-title' for="clave">Usuario</label>
+          <input className='input-login' type='text' placeholder='Usuario' required value={clave} onChange={handleClaveChange} id="clave"></input>
+          <label className='input-title' for="password">Contraseña</label>
+          <input className='input-login' type='password' placeholder='Contraseña' required value={contrasena} onChange={handleContrasenaChange} id="password"></input>
+          <input type="submit" value="Ingresar"></input>
+        </form>
       </div>
-      <form className="container" onSubmit={handleSubmit}>
-        <h1 className='title'>¡Bienvenido!</h1>
-        <label className='input-title' for="clave">Usuario</label>
-        <input className='input-login' type='text' placeholder='Usuario' required value={clave} onChange={handleClaveChange} id="clave"></input>
-        <label className='input-title' for="password">Contraseña</label>
-        <input className='input-login' type='password' placeholder='Contraseña' required value={contrasena} onChange={handleContrasenaChange} id="password"></input>
-        <input type="submit" value="Ingresar"></input>
-      </form>
-    </div>
+    </>
   )
 }

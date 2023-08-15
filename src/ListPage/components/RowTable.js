@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 const allColumnsFalse = (obj) => {
     for (const key in obj) {
@@ -11,8 +11,8 @@ const allColumnsFalse = (obj) => {
     return true; // Si no se encuentra ninguna propiedad con valor verdadero, retorna verdadero
 }
 
-export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTodo, columnsInitialState, columnsBeforeToEdit, changeNotificacion, changeEstado, estado }) => {
-    const [editable, seteditable] = useState(true);
+export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTodo, columnsInitialState, columnsBeforeToEdit, changeNotificacion2, changeEstado2, estado2, changeNotificacion3, changeEstado3, estado3, changeNotificacion4, changeEstado4, estado4 }) => {
+    const [editable, setEditable] = useState(true);
 
     const [userData, setUserData] = useState({
         grado: user[0],
@@ -28,6 +28,8 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
     });
 
     const [userDelete, setUserDelete] = useState(0);
+    const [userNon, setUserNon] = useState(0);
+    const [userYes, setUserYes] = useState(0);
     const [userDataEdit, setUserDataEdit] = useState(userData);
 
     const onInputChange = ({ target }) => {
@@ -38,47 +40,86 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
         })
     }
 
-    const listoButton = () => {
-        onEditTodo(counter, [
-            userDataEdit.grado,
-            parseInt(userDataEdit.clave),
-            userDataEdit.profesor,
-            userDataEdit.tipo,
-            userDataEdit.nivel,
-            parseInt(userDataEdit.materias),
-            parseInt(userDataEdit.asignadas),
-            parseInt(userDataEdit.faltantes),
-            parseInt(userDataEdit.practicas),
-            userDataEdit.observaciones
-        ]);
-        setUserData(userDataEdit)
-        seteditable(!editable);
-        columnsBeforeToEdit();
+    const listoButton = (numeroProfesor) => {
+        if(numeroProfesor == parseInt(userDataEdit.clave)){
+            onEditTodo(counter, [
+                userDataEdit.grado,
+                parseInt(userDataEdit.clave),
+                userDataEdit.profesor,
+                userDataEdit.tipo,
+                userDataEdit.nivel,
+                parseInt(userDataEdit.materias),
+                parseInt(userDataEdit.asignadas),
+                parseInt(userDataEdit.faltantes),
+                parseInt(userDataEdit.practicas),
+                userDataEdit.observaciones
+            ]);
+            setUserData(userDataEdit)
+            setEditable(!editable);
+            columnsBeforeToEdit();
+        }
     }
 
-    const editCancel = () => {
-        seteditable(!editable);
-        columnsBeforeToEdit();
+    const editCancel = (numeroProfesor) => {
+        if(numeroProfesor == parseInt(userDataEdit.clave)){
+            setEditable(!editable);
+            columnsBeforeToEdit();
+        }
     }
 
-    const activarNotificacion = (clave) => {
-        changeNotificacion(true);
-        setUserDelete(clave)
+    const activarNotificacion4 = (clave) => {
+        changeNotificacion4(true);
+        setUserNon(clave);
+    }
+
+    const activarNotificacion3 = (clave) => {
+        changeNotificacion3(true);
+        setUserYes(clave);
+    }
+
+    const activarNotificacion2 = (clave) => {
+        changeNotificacion2(true);
+        setUserDelete(clave);
     }
 
     useEffect(() => {
-        function verEstado() {
-            if (estado) {
-                changeEstado(false)
-                changeNotificacion(false)
-                onDeleteTodo(userDelete)
-                setUserDelete(0)
+        function verEstado2() {
+            if (estado2) {
+                changeEstado2(false);
+                changeNotificacion2(false);
+                onDeleteTodo(userDelete);
+                setUserDelete(0);
             } else {
-                changeNotificacion(false)
+                changeNotificacion2(false);
             }
         }
-        verEstado()
-    }, [estado])
+
+        function verEstado3() {
+            if (estado3) {
+                changeEstado3(false);
+                changeNotificacion3(false);
+                listoButton(userYes);
+                setUserYes(0);
+            } else {
+                changeNotificacion3(false);
+            }
+        }
+
+        function verEstado4() {
+            if (estado4) {
+                changeEstado4(false);
+                changeNotificacion4(false);
+                editCancel(userNon);
+                setUserNon(0)
+            } else {
+                changeNotificacion4(false);
+            }
+        }
+
+        verEstado2()
+        verEstado3()
+        verEstado4()
+    }, [estado2, estado3, estado4])
 
     if (!editable) {
         return (
@@ -97,12 +138,12 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
 
                 <th className='editRowTable'>
                     <a className='selectIcon'
-                        onClick={listoButton}
+                        onClick={() => activarNotificacion3(userData.clave)}
                     >
                         <img src='../images/icons/listo.png' className='icon' />
                     </a>
                     <a className='selectIcon'
-                        onClick={editCancel}
+                        onClick={() => activarNotificacion4(userData.clave)}
                     >
                         <img src='../images/icons/cancelar.png' className='icon' />
                     </a>
@@ -130,14 +171,14 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
                 : < th className='noBackgroundColor' >
                     <a className='selectIcon'
                         onClick={() => {
-                            seteditable(!editable);
+                            setEditable(!editable);
                             columnsInitialState(); // Poner todas las columnas visibles para poder editar
                         }}
                     >
                         <img src='../images/icons/editar.png' className='icon' />
                     </a>
                     <a className='selectIcon'
-                        onClick={() => activarNotificacion(userData.clave)}
+                        onClick={() => activarNotificacion2(userData.clave)}
                     >
                         <img src='../images/icons/borrar.png' className='icon' />
                     </a>

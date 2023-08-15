@@ -1,6 +1,5 @@
 import { useReducer, useState, useEffect } from 'react'
 import { todoReducer } from '../helpers/todoReducer';
-import { useLocation } from 'react-router-dom'
 
 const init = (dataName = 'dataTC') => { // Función para inicializar los datos de las tablas desde localStorage
     return JSON.parse(localStorage.getItem(dataName)) || [];
@@ -55,6 +54,11 @@ export const ListHook = () => {
     const [estado, setEstado] = useState(false);
     const [notificacion2, setNotificacion2] = useState(false);
     const [estado2, setEstado2] = useState(false);
+    const [notificacion3, setNotificacion3] = useState(false);
+    const [estado3, setEstado3] = useState(false);
+    const [notificacion4, setNotificacion4] = useState(false);
+    const [estado4, setEstado4] = useState(false);
+
     // const location = useLocation();
     const materiasForm = JSON.parse(localStorage.getItem('materias')) || 0;
 
@@ -72,6 +76,22 @@ export const ListHook = () => {
 
     const handleEstadoChange2 = (state) => {
         setEstado2(state)
+    }
+
+    const handleNotificacionChange3 = (activacion) => {
+        setNotificacion3(activacion)
+    }
+
+    const handleEstadoChange3 = (state) => {
+        setEstado3(state)
+    }
+
+    const handleNotificacionChange4 = (activacion) => {
+        setNotificacion4(activacion)
+    }
+
+    const handleEstadoChange4 = (state) => {
+        setEstado4(state)
     }
 
     const [columns, setColumns] = useState(initialStateColumns); // Estado de columnas que se muestran de la tabla
@@ -180,6 +200,14 @@ export const ListHook = () => {
 
         estado2, setEstado2,
         notificacion2, setNotificacion2,
-        handleNotificacionChange2, handleEstadoChange2
+        handleNotificacionChange2, handleEstadoChange2,
+
+        estado3, setEstado3,
+        notificacion3, setNotificacion3,
+        handleNotificacionChange3, handleEstadoChange3,
+
+        estado4, setEstado4,
+        notificacion4, setNotificacion4,
+        handleNotificacionChange4, handleEstadoChange4
     }
 }

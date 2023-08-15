@@ -2,7 +2,7 @@ import React from 'react'
 
 import { RowTable } from './RowTable'
 
-export const UserTable = ({ data, columns, onDeleteTodo, onEditTodo, columnsInitialState, columnsBeforeToEdit, colorTitle, color, changeNotificacion, changeEstado, estado}) => {
+export const UserTable = ({ data, columns, onDeleteTodo, onEditTodo, columnsInitialState, columnsBeforeToEdit, colorTitle, color, changeNotificacion2, changeEstado2, estado2, changeNotificacion3, changeEstado3, estado3, changeNotificacion4, changeEstado4, estado4 }) => {
     return (
         <div className='divTable'>
             <table>
@@ -33,9 +33,18 @@ export const UserTable = ({ data, columns, onDeleteTodo, onEditTodo, columnsInit
                                 onEditTodo={onEditTodo}
                                 columnsInitialState={columnsInitialState}
                                 columnsBeforeToEdit={columnsBeforeToEdit}
-                                changeNotificacion={changeNotificacion}
-                                changeEstado={changeEstado}
-                                estado={estado}
+
+                                changeNotificacion2={changeNotificacion2}
+                                changeEstado2={changeEstado2}
+                                estado2={estado2}
+
+                                changeNotificacion3={changeNotificacion3}
+                                changeEstado3={changeEstado3}
+                                estado3={estado3}
+
+                                changeNotificacion4={changeNotificacion4}
+                                changeEstado4={changeEstado4}
+                                estado4={estado4}
                             />
                         )
                     })}

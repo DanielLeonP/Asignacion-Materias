@@ -5,8 +5,9 @@ const orderByName = (data) => {
         return a[2].localeCompare(b[2])
     });
 }
-export const todoReducer = (initialState, action) => {
 
+export const todoReducer = (initialState, action) => {
+    console.log(action)
     switch (action.type) {
         case '[DATA] Add Row':
             if (includeClave(initialState, action.payload[1])) {
@@ -14,8 +15,6 @@ export const todoReducer = (initialState, action) => {
                 return initialState;
             }
             return orderByName([...initialState, action.payload]);
-
-        // return orderByName([...initialState, action.payload]);
 
         case '[DATA] Delete Row':
             return initialState.filter(data => data[1] !== action.payload);
