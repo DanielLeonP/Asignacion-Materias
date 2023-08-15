@@ -58,8 +58,8 @@ export const ListHook = () => {
     const [estado3, setEstado3] = useState(false);
     const [notificacion4, setNotificacion4] = useState(false);
     const [estado4, setEstado4] = useState(false);
+    const [notificacion5, setNotificacion5] = useState(false);
 
-    // const location = useLocation();
     const materiasForm = JSON.parse(localStorage.getItem('materias')) || 0;
 
     const handleNotificacionChange = (activacion) => {
@@ -94,6 +94,10 @@ export const ListHook = () => {
         setEstado4(state)
     }
 
+    const handleNotificacionChange5 = (activacion) => {
+        setNotificacion5(activacion)
+    }
+
     const [columns, setColumns] = useState(initialStateColumns); // Estado de columnas que se muestran de la tabla
     const [columnsBefore, setColumnsBefore] = useState(columns); // Estado anterior al actual de las columnas en las tablas
 
@@ -117,8 +121,9 @@ export const ListHook = () => {
         observaciones: 0,
         faltantes: 0
     });
-
+    
     useEffect(() => { // UseEffect para cada que cambie data, data2, data3 se guarden los cambios en localStorage y para actualizar la información de materias asignadas
+        if(sessionStorage.getItem("d")){ setNotificacion5(true); sessionStorage.clear(); }
         updateInfo();
         setLocalStorage('dataTC', data);
         setLocalStorage('dataTL', data2);
@@ -179,7 +184,6 @@ export const ListHook = () => {
         setColumns(columnsBefore)
     }
 
-
     return {
         notificado,
         columns, setColumns,
@@ -208,6 +212,9 @@ export const ListHook = () => {
 
         estado4, setEstado4,
         notificacion4, setNotificacion4,
-        handleNotificacionChange4, handleEstadoChange4
+        handleNotificacionChange4, handleEstadoChange4,
+
+        notificacion5,
+        handleNotificacionChange5
     }
 }

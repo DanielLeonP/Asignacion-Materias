@@ -7,12 +7,11 @@ const orderByName = (data) => {
 }
 
 export const todoReducer = (initialState, action) => {
-    console.log(action)
     switch (action.type) {
         case '[DATA] Add Row':
             if (includeClave(initialState, action.payload[1])) {
-                window.alert('La clave del Profesor ya existe, no se pudo insertar el profesor a la tabla');
-                return initialState;
+                sessionStorage.setItem("d", true);
+                return [...initialState, action.payload]
             }
             return orderByName([...initialState, action.payload]);
 

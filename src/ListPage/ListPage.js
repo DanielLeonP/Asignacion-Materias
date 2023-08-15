@@ -1,5 +1,3 @@
-
-
 // Styles
 import './List.css'
 
@@ -18,7 +16,7 @@ import { LogoutButton } from '../components/LogoutButton';
 export const ListPage = () => {
 
   const { 
-    notificado, 
+    notificado,
     columns, setColumns,
 
     data,
@@ -45,12 +43,17 @@ export const ListPage = () => {
 
     estado4,
     notificacion4,
-    handleNotificacionChange4, handleEstadoChange4
+    handleNotificacionChange4, handleEstadoChange4,
+
+    notificacion5,
+    handleNotificacionChange5
   } = ListHook();
 
   return (
     <>
       <LogoutButton />
+
+      <FloatingNotification customTitle="Clave de Profesor Repetida" customText="La clave del profesor que deseas ingresar, ya existe, no se pudo insertar en la tabla." customButtons={false} notificacion={notificacion5} changeNotificacion={handleNotificacionChange5} />
 
       <FloatingNotification customTitle="Cancelar Cambios" customText="¿Deseas desechar los cambios realizados a este profesor?" customButtons={true} notificacion={notificacion4} changeNotificacion={handleNotificacionChange4} changeEstado={handleEstadoChange4} />
 
@@ -60,7 +63,7 @@ export const ListPage = () => {
 
       <FloatingNotification customTitle="Exportar y Salir" customText="¿Deseas exportar tus datos y salir?" customButtons={true} notificacion={notificacion} changeNotificacion={handleNotificacionChange} changeEstado={handleEstadoChange} />
 
-      <FloatingNotification customTitle="Materias no Coincidentes" customText="El número de materias restantes sobrepasa el número de materias" customButtons={false} notificacion={notificado} changeNotificacion={handleNotificacionChange} />
+      <FloatingNotification customTitle="Materias no Coincidentes" customText="El número de materias restantes sobrepasa el número de materias." customButtons={false} notificacion={notificado} changeNotificacion={handleNotificacionChange} />
 
       <div className='container'>
         <div className='title'>Materias Asignadas</div>
