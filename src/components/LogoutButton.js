@@ -17,12 +17,12 @@ export const LogoutButton = () => {
   }
 
   return (
-    <div className='optionsDiv'>
-      <div className='welcome'>
-        Bienvenido {user.name}
-      </div>
-      <button className='adminUsers' onClick={adminUsers}>Administrar usuarios</button>
-      <button className='logout' onClick={onLogout}>Cerrar sesión</button>
+    <div className="dropdown">
+      <button className="dropdown-button">Bienvenido {user.name}</button>
+      <ul className="dropdown-content">
+        <li onClick={adminUsers}>Administrar usuarios</li>
+        <li className='liLogout' onClick={onLogout}>Cerrar sesión</li>
+      </ul>
     </div>
   )
 }
