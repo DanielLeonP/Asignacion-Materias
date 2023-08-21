@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const allColumnsFalse = (obj) => {
     for (const key in obj) {
@@ -41,17 +41,17 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
     }
 
     const listoButton = (numeroProfesor) => {
-        if(numeroProfesor == parseInt(userDataEdit.clave)){
+        if(numeroProfesor === parseInt(userDataEdit.clave)){
             onEditTodo(counter, [
                 userDataEdit.grado,
-                parseInt(userDataEdit.clave),
+                parseInt(userDataEdit.clave ? userDataEdit.clave : 0),
                 userDataEdit.profesor,
                 userDataEdit.tipo,
                 userDataEdit.nivel,
-                parseInt(userDataEdit.materias),
-                parseInt(userDataEdit.asignadas),
-                parseInt(userDataEdit.faltantes),
-                parseInt(userDataEdit.practicas),
+                parseInt(userDataEdit.materias ? userDataEdit.materias : 0),
+                parseInt(userDataEdit.asignadas ? userDataEdit.asignadas : 0),
+                parseInt(userDataEdit.faltantes ? userDataEdit.faltantes : 0),
+                parseInt(userDataEdit.practicas ? userDataEdit.practicas : 0),
                 userDataEdit.observaciones
             ]);
             setUserData(userDataEdit)
@@ -61,7 +61,7 @@ export const RowTable = ({ color, columns, user, counter, onDeleteTodo, onEditTo
     }
 
     const editCancel = (numeroProfesor) => {
-        if(numeroProfesor == parseInt(userDataEdit.clave)){
+        if(numeroProfesor === parseInt(userDataEdit.clave)){
             setEditable(!editable);
             columnsBeforeToEdit();
         }

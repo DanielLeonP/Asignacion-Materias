@@ -1,19 +1,8 @@
 import React from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
-import { ListPage } from './ListPage/ListPage.js'
-import { FormPage } from './FormPage/FormPage.js'
-import { LoginPage } from './LoginPage.js'
 
 export const MainApp = () => {
     return (
         <>
-            <Routes>
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/form" element={<FormPage />} />
-                <Route path="/list" element={<ListPage />} />
-                <Route path="/*" element={<Navigate to="/login" />} />
-            </Routes>
-
             <footer>
                 <div className='circulo circulo1'></div>
                 <div className='circulo circulo2'></div>

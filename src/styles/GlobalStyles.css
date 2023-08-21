@@ -134,18 +134,23 @@
     width: auto;
     height: auto;
     background-color: #e8e6f4;
-    margin: 12vh 10vw 5vh 10vw;
-    padding: 2%;
+    margin: 8vh 10vw 5vh 10vw;
+    padding: 1%;
     box-sizing: border-box;
     box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, .8);
-    display: flex;
     position: relative;
     z-index: 10;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    flex-direction: column;
 }
 
 .title {
-    font-size: xx-large;
-    margin: 1%;
+    font-size: 40px !important;
+    margin: 1.5% !important;
 }
 
 .input-title {
@@ -304,7 +309,6 @@ input[type='submit']:active {
 }
 
 @keyframes wobble2 {
-
     0%,
     100% {
         transform: translateY(0%) scale(1);
@@ -317,41 +321,6 @@ input[type='submit']:active {
     }
 }
 
-
-
-/* .adminUsers {
-    border: 3px solid #1B1E62;
-    border-radius: 15px;
-    padding: 7px;
-    font-size: medium;
-    margin-left: 7px;
-}
-
-.adminUsers:hover {
-    cursor: pointer;
-    background-color: #1B1E62;
-    color: white
-}
-
-.logout {
-    border: 3px solid #900404;
-    border-radius: 15px;
-    padding: 7px;
-    font-size: medium;
-    margin-left: 7px;
-}
-
-.logout:hover {
-    cursor: pointer;
-    background-color: #900404;
-    color: white
-}
-
-.welcome {
-    color: white;
-    margin-right: 7px;
-    padding: 5px 5px;
-} */
 /* dropdown */
 .optionsDiv {
     position: fixed;
@@ -374,7 +343,7 @@ input[type='submit']:active {
     position: fixed;
     /* position: relative; */
     display: inline-block;
-    top: 20px;
+    top: 13px;
     right: 20px;
     z-index: 20;
 }
@@ -386,10 +355,10 @@ input[type='submit']:active {
     padding: 10px 20px;
     cursor: pointer;
 
-    background-color: #54545836;
+    background-color: #54545860;
     border-radius: 7px;
     /* border: 1px solid #000; */
-    top: 20px;
+    top: 15px;
     right: 20px;
     box-sizing: border-box;
     display: flex;
@@ -398,7 +367,7 @@ input[type='submit']:active {
     z-index: 20;
     width: fit-content;
     height: fit-content;
-    padding: 5px;
+    padding: 0.3vw 1vw;
 
 }
 
@@ -407,9 +376,8 @@ input[type='submit']:active {
     position: absolute;
     background-color: white;
     border: 1px solid #ddd;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
     list-style: none;
-    padding: 0;
 }
 
 .dropdown:hover .dropdown-content {
@@ -423,7 +391,9 @@ input[type='submit']:active {
 .liLogout:hover {
     background-color: red !important;
     color: white;
-
+}
+.liLogout:active {
+    background-color: #c0392b !important;
 }
 
 .dropdown-content li:hover {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FieldProfessor } from './FieldProfessor';
 
-const initialValues = { //Valores para estado inicial de los inputs
+const initialValues = { // Valores para estado inicial de los inputs
     grado: '',
     clave: '',
     profesor: '',
@@ -13,39 +13,38 @@ const initialValues = { //Valores para estado inicial de los inputs
     practicas: '',
     observaciones: ''
 }
-export const AddRow = ({ handleAddTodo, handleAddTodo2, handleAddTodo3 }) => {
-    const [isOpenAddRow, setIsOpenAddRow] = useState(false); //Estado para desglosar el formulario
-    const [profesorType, setProfesorType] = useState('tiempo_completo'); //Estado para saber  en que tabla insertar datos
 
-    const toggleMenuAddRow = () => { //Función para cambiar de estado de desglosar formulario
+export const AddRow = ({ handleAddTodo, handleAddTodo2, handleAddTodo3 }) => {
+    const [isOpenAddRow, setIsOpenAddRow] = useState(false); // Estado para desglosar el formulario
+    const [profesorType, setProfesorType] = useState('tiempo_completo'); // Estado para saber  en que tabla insertar datos
+
+    const toggleMenuAddRow = () => { // Función para cambiar de estado de desglosar formulario
         setIsOpenAddRow(!isOpenAddRow);
     };
-    const addRow = () => { //Función para agregar datos a la tabla seleccionada
-        const dataToSend = [ //Preparación de datos para ser agregados
+
+    const addRow = () => { // Función para agregar datos a la tabla seleccionada
+        const dataToSend = [ // Preparación de datos para ser agregados
             userData.grado,
-            parseInt(userData.clave),
+            parseInt(userData.clave ? userData.clave : 0),
             userData.profesor,
             userData.tipo,
             userData.nivel,
-            parseInt(userData.materias),
-            parseInt(userData.asignadas),
-            parseInt(userData.faltantes),
-            parseInt(userData.practicas),
+            parseInt(userData.materias ? userData.materias : 0),
+            parseInt(userData.asignadas ? userData.asignadas : 0),
+            parseInt(userData.faltantes ? userData.faltantes : 0),
+            parseInt(userData.practicas ? userData.practicas : 0),
             userData.observaciones
         ];
-        switch (profesorType) { //Switch para saber a que tabla agregar los datos
+        switch (profesorType) { // Switch para saber a que tabla agregar los datos
             case 'tiempo_completo':
-                // console.log('Insertado a tiempo_completo')
                 handleAddTodo(dataToSend);
                 setUserData(initialValues);
                 return;
             case 'tiempo_libre':
-                // console.log('Insertado a tiempo_libre')
                 handleAddTodo2(dataToSend);
                 setUserData(initialValues);
                 return;
             case 'honorarios':
-                // console.log('Insertado a honorarios')
                 handleAddTodo3(dataToSend);
                 setUserData(initialValues);
                 return;
@@ -54,11 +53,12 @@ export const AddRow = ({ handleAddTodo, handleAddTodo2, handleAddTodo3 }) => {
         }
     }
 
-    const [userData, setUserData] = useState(initialValues); //Estado de los datos del profesor
+    const [userData, setUserData] = useState(initialValues); // Estado de los datos del profesor
 
-    const onRadioChange = (e) => { //Cambiar el estado de la tabla a la que se debe agregar los datos del profesor
+    const onRadioChange = (e) => { // Cambiar el estado de la tabla a la que se debe agregar los datos del profesor
         setProfesorType(e.target.value)
     }
+
     return (
         <div className='AddRow'>
             <a className='AddRowTitle' onClick={toggleMenuAddRow}>

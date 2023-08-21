@@ -34,9 +34,10 @@ export const ExcelReader = ({ handleValidando, estado, changeEstado, changeNotif
         const celdas = libro.Sheets[primerHoja];
         const excelData = XLSX.utils.sheet_to_json(celdas, { header: 1 });
 
-        if (excelData[2] === "") {
+        if (excelData[2] == "") {
           excelData.forEach(row => row.shift())
         }
+
         let dataTC = []; let dataTL = []; let dataH = []; let tipoProfesor = "";
         for (let i = 0; i < excelData.length; i++) {
           tipoProfesor = (excelData[i][4] === "Tiempos Completos" ? "TC" : (excelData[i][4] === "Tiempos Libres" ? "TL" : (excelData[i][4] === "Honorarios" ? "H" : tipoProfesor)))
