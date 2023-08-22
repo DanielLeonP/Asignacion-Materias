@@ -11,7 +11,7 @@ export const todoReducer = (initialState, action) => {
         case '[DATA] Add Row':
             if (includeClave(initialState, action.payload[1])) {
                 sessionStorage.setItem("d", true);
-                return [...initialState, action.payload]
+                return [...initialState]
             }
             return orderByName([...initialState, action.payload]);
 

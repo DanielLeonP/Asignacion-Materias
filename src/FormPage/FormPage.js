@@ -28,7 +28,7 @@ export const FormPage = () => {
       <LogoutButton />
 
       <FloatingNotification customTitle="Archivo Faltante" customText="¿Deseas no subir ningun archivo (.xlsx), para la extracción de datos y por el contrario empezar un nuevo set de datos?" customButtons={true} notificacion={notificacion} changeNotificacion={handleNotificacionChange} changeEstado={handleEstadoChange} />
-      
+
       <div className='carga' style={validando ? { display: "grid" } : { display: "none" }}>
         <div className="three-body">
           <div className="three-body__dot"></div>
@@ -37,7 +37,7 @@ export const FormPage = () => {
         </div>
         <label className="carga-texto">Cargando Datos...</label>
       </div>
-      <form className="container menor">
+      <form className="container mayor">
         <h1 className='title'>Asignación de Materias</h1>
         <ExcelReader handleValidando={handleValidando} estado={estado} changeEstado={handleEstadoChange} changeNotificacion={handleNotificacionChange} />
       </form>

@@ -1,13 +1,18 @@
-
 /* input[type="file"]{
     display: none;
 } */
-.margen{
+.margen {
     margin-top: 2vh;
 }
-.menor{
+
+.mayor {
+    margin: 11vh 10vw 5vh 10vw !important;
+}
+
+.menor {
     margin: 7.5vh 10vw 5vh 10vw !important;
 }
+
 .file-upload {
     width: 80%;
     font-size: large;
@@ -23,12 +28,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
 }
-.file-upload:hover{
+
+.file-upload:hover {
     background-color: #d4d1ea;
     cursor: pointer;
 }
+
 .file-upload input {
     display: flex;
     width: 100%;
@@ -38,10 +45,12 @@
     cursor: pointer;
     margin: -5.5vh 0 0 0;
 }
-.file-title{
+
+.file-title {
     width: 100%;
 }
-.input-materias{
+
+.input-materias {
     width: 80%;
     padding: 1%;
     font-size: large;

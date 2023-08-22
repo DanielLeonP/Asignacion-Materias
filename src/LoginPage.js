@@ -33,8 +33,12 @@ export const LoginPage = () => {
 
       const lastPath = localStorage.getItem('lastPath') || '/';
       login(user.username);
+      // console.log(lastPath)
+      if (lastPath === '/users') {
+        navigate('/list', { replace: true });
+        return;
+      }
       navigate(lastPath, { replace: true });
-
       setValidando(false);
       return;
     }
